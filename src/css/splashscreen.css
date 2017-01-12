@@ -1,0 +1,19 @@
+/*.anchorPane {
+    -fx-border-radius: 25px !important;
+    !*-fx-background-radius: 25px !important;
+    -fx-background-color: transparent;*!
+    !*-fx-background-insets: 15px !important;*!
+    !*-fx-border-width: 8px;*!
+    !*-fx-border-color: rgba(35, 155, 45, .4) !important;;*!
+    !*!*-fx-effect: dropshadow(three-pass-box, #000, 10, 1.0, 100, 100);*!*!
+}*/
+
+.nameLabel {
+    -fx-background-color: #ecedef;
+    -fx-font-family: cursive;
+}
+
+.rootPane {
+    -fx-effect: dropshadow(three-pass-box, #000, 10, 1.0, 100, 100) !important;
+    -fx-background-color: white;
+}

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="512.0" prefWidth="805.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecordController">
+    <stylesheets>
+        <URL value="@../css/main.css" />
+    </stylesheets>
+    <children>
+        <GridPane alignment="TOP_CENTER" prefHeight="45.0" prefWidth="805.0" styleClass="headerBackground">
+            <columnConstraints>
+                <ColumnConstraints hgrow="ALWAYS" maxWidth="444.0" minWidth="10.0" prefWidth="223.0" />
+                <ColumnConstraints hgrow="ALWAYS" maxWidth="1093.0" minWidth="10.0" prefWidth="831.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="934.0" minWidth="10.0" prefWidth="199.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+            </rowConstraints>
+            <children>
+                <ImageView blendMode="SCREEN" fitHeight="37.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+                    <GridPane.margin>
+                        <Insets bottom="12.0" left="42.0" right="5.0" top="12.0" />
+                    </GridPane.margin>
+                    <image>
+                        <Image preserveRatio="true" smooth="true" url="@../images/logo.png" />
+                    </image>
+                </ImageView>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="20.0" prefWidth="493.0" styleClass="headerLabel" text="GESTADVENT - Enregistrement de sermons" textOverrun="WORD_ELLIPSIS" GridPane.columnIndex="1">
+                    <font>
+                        <Font size="19.0" />
+                    </font>
+                    <GridPane.margin>
+                        <Insets bottom="12.0" left="165.0" right="15.0" top="12.0" />
+                    </GridPane.margin>
+                </Label>
+
+            </children>
+        </GridPane>
+        <Label layoutX="272.0" layoutY="97.0" prefHeight="45.0" prefWidth="236.0" text=""  fx:id="timeLabel" styleClass="timeLabel"/>
+        <Slider layoutX="111.0" layoutY="422.0" prefHeight="18.0" prefWidth="584.0" />
+        <ImageView fitHeight="123.0" fitWidth="136.0" layoutX="328.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../images/stop.png" />
+        </ImageView>
+    </children>
+</AnchorPane>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="928.0" prefWidth="1254.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SermonController">
+    <stylesheets>
+        <URL value="@../css/main.css" />
+    </stylesheets>
+    <children>
+        <VBox layoutX="427.0" layoutY="156.0" prefHeight="928.0" prefWidth="1254.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <GridPane alignment="TOP_CENTER" prefHeight="68.0" prefWidth="1254.0" styleClass="headerBackground">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="444.0" minWidth="10.0" prefWidth="223.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1093.0" minWidth="10.0" prefWidth="831.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="934.0" minWidth="10.0" prefWidth="199.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                    </rowConstraints>
+                    <children>
+                        <ImageView blendMode="SCREEN" fitHeight="65.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="42.0" right="5.0" top="12.0" />
+                            </GridPane.margin>
+                            <image>
+                                <Image preserveRatio="true" smooth="true" url="@../images/logo.png" />
+                            </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="493.0" styleClass="headerLabel" text="GESTADVENT - Enregistrement de sermons" textOverrun="WORD_ELLIPSIS" GridPane.columnIndex="1">
+                            <font>
+                                <Font size="19.0" />
+                            </font>
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="165.0" right="15.0" top="12.0" />
+                            </GridPane.margin>
+                        </Label>
+                       <ImageView fx:id="backHome" fitHeight="62.0" fitWidth="51.0" onMouseClicked="#backHome" pickOnBounds="true" preserveRatio="true" styleClass="backHome" GridPane.columnIndex="2">
+                           <Image url="@../images/Home-50.png" />
+                       </ImageView>
+
+                    </children>
+                </GridPane>
+                <HBox prefHeight="861.0" prefWidth="1254.0">
+                    <Pane prefHeight="861.0" prefWidth="217.0" styleClass="microPane">
+                        <ImageView onMouseClicked="#record" fx:id="microButton" fitHeight="89.0" fitWidth="239.0" layoutX="64.0" layoutY="366.0" pickOnBounds="true" preserveRatio="true" styleClass="microButton">
+                            <Image preserveRatio="true" smooth="true" url="@../images/microphone.png" />
+                        </ImageView>
+                    </Pane>
+               <ListView fx:id="listView" prefHeight="861.0" prefWidth="300.0" />
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

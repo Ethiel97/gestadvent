@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="928.0" prefWidth="1254.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
+    <stylesheets>
+        <URL value="@../css/main.css" />
+    </stylesheets>
+    <children>
+        <VBox layoutX="1.0" layoutY="-1.0" prefHeight="928.0" prefWidth="1254.0" AnchorPane.bottomAnchor="-8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+            <children>
+                <GridPane alignment="TOP_CENTER" prefHeight="94.0" prefWidth="1247.0" styleClass="headerBackground">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="444.0" minWidth="10.0" prefWidth="223.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1093.0" minWidth="10.0" prefWidth="831.0" />
+                        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="934.0" minWidth="10.0" prefWidth="199.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                    </rowConstraints>
+                    <children>
+                        <ImageView blendMode="SCREEN" fitHeight="65.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true">
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="42.0" right="5.0" top="12.0" />
+                            </GridPane.margin>
+                            <image>
+                                <Image preserveRatio="true" smooth="true" url="@../images/logo.png" />
+                            </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="493.0" styleClass="headerLabel" text="GESTADVENT - Gestion de membres" textOverrun="WORD_ELLIPSIS" GridPane.columnIndex="1">
+                            <font>
+                                <Font size="19.0" />
+                            </font>
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="165.0" right="15.0" top="12.0" />
+                            </GridPane.margin>
+                        </Label>
+
+                    </children>
+                </GridPane>
+                <MenuBar prefHeight="33.0" prefWidth="1069.0">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="Fichier">
+                            <items>
+                                <MenuItem fx:id="exit" onAction="#exitApplication" text="Exit" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Actions">
+                            <items>
+                                <MenuItem fx:id="add" mnemonicParsing="false" onAction="#toggleAdd" text="Ajouter" />
+                                <MenuItem fx:id="modify" mnemonicParsing="false" onAction="#toggleModify" text="Modifier" />
+                                <MenuItem fx:id="search" mnemonicParsing="false" onAction="#toggleSearch" text="Rechercher" />
+                                <MenuItem fx:id="delete" mnemonicParsing="false" onAction="#toggleDelete" text="Supprimer" />
+                                <MenuItem fx:id="stats" mnemonicParsing="false" onAction="#toggleStats" text="Statistiques" />
+                            </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Aide">
+                            <items>
+                                <MenuItem fx:id="help" onAction="#showHelpDialog" text="A propos" />
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+                <GridPane alignment="TOP_CENTER" prefHeight="485.0" prefWidth="1227.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="242.0" minHeight="10.0" prefHeight="235.0" vgrow="ALWAYS" />
+                        <RowConstraints maxHeight="242.0" minHeight="10.0" prefHeight="235.0" vgrow="ALWAYS" />
+                    </rowConstraints>
+                    <children>
+                        <VBox fx:id="addButton" alignment="CENTER" onMouseClicked="#switchTo" prefHeight="225.0" prefWidth="343.0" styleClass="vBox" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                            </GridPane.margin>
+                            <children>
+                                <ImageView fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image preserveRatio="true" smooth="true" url="@../images/user_add.png" />
+                                </ImageView>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="113.0" styleClass="gridLabel" text="AJOUTER">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                            </GridPane.margin>
+                        </VBox>
+                        <VBox fx:id="consultButton" alignment="CENTER" onMouseClicked="#switchTo" prefHeight="200.0" prefWidth="100.0" styleClass="vBox" GridPane.columnIndex="1">
+                            <children>
+                                <ImageView fitHeight="120.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image preserveRatio="true" smooth="true" url="@../images/phone-book.png" />
+                                </ImageView>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="130.0" styleClass="gridLabel" text="CONSULTER">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                           <VBox.margin>
+                              <Insets top="14.0" />
+                           </VBox.margin>
+                                </Label>
+                            </children>
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                            </GridPane.margin>
+                        </VBox>
+                        <VBox fx:id="deleteButton" alignment="CENTER" onMouseClicked="#switchTo" prefHeight="200.0" prefWidth="100.0" styleClass="vBox" GridPane.columnIndex="2">
+                            <children>
+                                <ImageView fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image preserveRatio="true" smooth="true" url="@../images/user_delete.png" />
+                                </ImageView>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="127.0" styleClass="gridLabel" text="SUPPRIMER">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                            </GridPane.margin>
+                        </VBox>
+                        <VBox fx:id="sermonButton" alignment="CENTER" onMouseClicked="#switchTo" prefHeight="200.0" prefWidth="100.0" styleClass="vBox" GridPane.rowIndex="1">
+                            <children>
+                                <ImageView fitHeight="123.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image preserveRatio="true" smooth="true" url="@../images/voice-recorder-microphone.png" />
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                                </ImageView>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="140.0" styleClass="gridLabel" text="ENREGISTRER">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                           <VBox.margin>
+                              <Insets top="18.0" />
+                           </VBox.margin>
+                                </Label>
+                            </children>
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                            </GridPane.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="vBox" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                            <children>
+                                <ImageView fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image preserveRatio="true" smooth="true" url="@../images/line-chart.png" />
+                                </ImageView>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="127.0" styleClass="gridLabel" text="STATISTIQUES">
+                                    <font>
+                                        <Font size="18.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                            </GridPane.margin>
+                        </VBox>
+                        <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="vBox" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                            <children>
+                                <ImageView fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+                                    <Image preserveRatio="true" smooth="true" url="@../images/give-money.png" />
+                                </ImageView>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="127.0" styleClass="gridLabel" text="TRESORERIE">
+                                    <Font size="18.0" />
+                                </Label>
+                            </children>
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                            </GridPane.margin>
+                        </VBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets left="10.0" right="10.0" top="20.0" />
+                    </VBox.margin>
+                </GridPane>
+                <AnchorPane prefHeight="299.0" prefWidth="1254.0">
+                    <children>
+                        <Label alignment="CENTER" layoutX="552.0" layoutY="252.0" prefHeight="45.0" prefWidth="151.0" styleClass="authorLabel" text="Designed by Ethiel ADIASSA" />
+                    </children>
+                </AnchorPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

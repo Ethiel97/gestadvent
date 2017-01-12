@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import java.net.URL?>
+<AnchorPane fx:id="splashScreenRoot" prefHeight="451.0" prefWidth="669.0" xmlns="http://javafx.com/javafx/8.0.102"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SplashScreenController">
+    <stylesheets>
+        <URL value="@../css/splashscreen.css"/>
+    </stylesheets>
+    <children>
+        <AnchorPane fx:id="rootPane" layoutY="-2.0" prefHeight="652.0" prefWidth="750.0" styleClass="rootPane">
+            <children>
+                <ImageView fitHeight="474.0" fitWidth="779.0" layoutX="21.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@../images/gestadvent.png"/>
+                    </image>
+                </ImageView>
+                <Label alignment="CENTER" layoutX="33.0" layoutY="486.0" prefHeight="126.0" prefWidth="717.0"
+                       style="-fx-font-size: 35px;" styleClass="nameLabel" text="GESTADVENT" textFill="#34c786"
+                       textOverrun="CLIP"/>
+            </children>
+            <padding>
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            </padding>
+        </AnchorPane>
+    </children>
+</AnchorPane>
