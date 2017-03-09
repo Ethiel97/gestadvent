@@ -19,7 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="928.0" prefWidth="1254.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ConsultController">
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="928.0" prefWidth="1254.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ConsultController">
     <stylesheets>
         <URL value="@../css/main.css" />
     </stylesheets>
@@ -43,7 +43,7 @@
                                 <Image preserveRatio="true" smooth="true" url="@../images/logo.png" />
                             </image>
                         </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" prefWidth="433.0" styleClass="headerLabel" text="GESTADVENT - Gestion de membres" textOverrun="WORD_ELLIPSIS" GridPane.columnIndex="1" VBox.vgrow="ALWAYS">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="476.0" styleClass="headerLabel" text="GESTADVENT - Gestion de membres" textOverrun="WORD_ELLIPSIS" GridPane.columnIndex="1" VBox.vgrow="ALWAYS">
                             <font>
                                 <Font size="14.0" />
                             </font>
@@ -55,7 +55,7 @@
                     </children>
                 </GridPane>
 
-                <AnchorPane prefHeight="817.0" prefWidth="1247.0" VBox.vgrow="ALWAYS">
+                <AnchorPane prefHeight="849.0" prefWidth="1247.0" VBox.vgrow="ALWAYS">
                     <children>
                         <ImageView fx:id="backHome" fitHeight="62.0" fitWidth="51.0" layoutX="73.0" layoutY="15.0" onMouseClicked="#backHome" pickOnBounds="true" preserveRatio="true" styleClass="backHome">
                             <image>
@@ -83,11 +83,12 @@
                             <content>
                                 <TableView fx:id="tableViewMember" prefHeight="662.0" prefWidth="1252.0" tableMenuButtonVisible="false">
                                     <columns>
-                                        <TableColumn fx:id="idColumn" prefWidth="47.0" text="Id" />
-                                        <TableColumn fx:id="nomColumn" prefWidth="90.0" text="Nom" />
-                                        <TableColumn fx:id="prenomColumn" prefWidth="131.0" text="Prenom" />
-                                        <TableColumn fx:id="sexeColumn" prefWidth="41.0" text="Sexe" />
-                                        <TableColumn fx:id="naissanceColumn" prefWidth="129.0" text="Naissance" />
+                                        <TableColumn fx:id="idColumn" prefWidth="39.0" text="Id" />
+                                        <TableColumn fx:id="nomColumn" prefWidth="98.0" text="Nom" />
+                                        <TableColumn fx:id="prenomColumn" prefWidth="125.99996948242188" text="Prenom" />
+                                        <TableColumn fx:id="sexeColumn" prefWidth="46.000030517578125" text="Sexe" />
+                                        <TableColumn fx:id="ageColumn" prefWidth="44.0" text="Age" />
+                                        <TableColumn fx:id="naissanceColumn" prefWidth="88.0" text="Naissance" />
                                         <TableColumn fx:id="situationMColumn" minWidth="0.0" prefWidth="111.0" text="Situation M" />
                                         <TableColumn fx:id="adresseColumn" prefWidth="191.0" text="Adresse" />
                                         <TableColumn fx:id="emailColumn" prefWidth="164.0" text="Email" />

@@ -2,6 +2,8 @@ package controller;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
+import javafx.animation.ScaleTransition;
+import javafx.animation.SequentialTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -33,7 +35,7 @@ import java.util.logging.Logger;
 
 public class DashboardController implements Initializable {
 
-    private static final Logger logger = Logger.getLogger (DashboardController.class.getName ());
+    private static final Logger logger = Logger.getLogger(DashboardController.class.getName());
 
 
     @FXML
@@ -62,6 +64,8 @@ public class DashboardController implements Initializable {
     private VBox deleteButton;
     @FXML
     private VBox sermonButton;
+    @FXML
+    private VBox statsButton;
 
     double pressedX;
     double pressedY;
@@ -75,23 +79,23 @@ public class DashboardController implements Initializable {
 
     @FXML
     private void exitApplication() {
-        Stage stage = (Stage) addButton.getScene ().getWindow ();
-        Alert alert = new Alert (Alert.AlertType.CONFIRMATION);
-        alert.setHeaderText ("GESTADVENT");
+        Stage stage = (Stage) addButton.getScene().getWindow();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText("GESTADVENT");
       /*  Image image = new Image("images/logo.png");
         ImageView imageView = new ImageView(image);
         alert.setGraphic(imageView);*/
-        alert.setContentText ("Desirez-vous vraiment quitter l'application ?");
-        alert.initOwner (stage);
-        alert.initModality (Modality.APPLICATION_MODAL);
-        Button exitButton = (Button) alert.getDialogPane ().lookupButton (ButtonType.OK);
-        exitButton.setText ("Quitter GESTADVENT");
+        alert.setContentText("Desirez-vous vraiment quitter l'application ?");
+        alert.initOwner(stage);
+        alert.initModality(Modality.APPLICATION_MODAL);
+        Button exitButton = (Button) alert.getDialogPane().lookupButton(ButtonType.OK);
+        exitButton.setText("Quitter GESTADVENT");
 
-        Optional<ButtonType> result = alert.showAndWait ();
-        if (ButtonType.OK.equals (result.get ())) {
-            Platform.exit ();
+        Optional<ButtonType> result = alert.showAndWait();
+        if (ButtonType.OK.equals(result.get())) {
+            Platform.exit();
         } else
-            alert.close ();
+            alert.close();
     }
 
     @FXML
@@ -133,13 +137,13 @@ public class DashboardController implements Initializable {
     private void showHelpDialog(ActionEvent event) {
 //        Stage stage = (Stage) ((AnchorPane) event.getSource()).getScene().getWindow();
         String title = "Infos GESTADVENT";
-        Alert alert = new Alert (Alert.AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
 //        alert.initOwner(stage);
-        alert.setTitle (title);
-        alert.initModality (Modality.APPLICATION_MODAL);
-        alert.setHeaderText ("A propos de GESTADVENT");
-        alert.setContentText ("Application de Gestion de membres d'eglise \n developpee par Ethiel ADIASSA \n pour une gestion plus efficiente des membres d'eglise adventiste.");
-        alert.showAndWait ();
+        alert.setTitle(title);
+        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.setHeaderText("A propos de GESTADVENT");
+        alert.setContentText("Application de Gestion de membres d'eglise \n developpee par Ethiel ADIASSA \n pour une gestion plus efficiente des membres d'eglise adventiste.");
+        alert.showAndWait();
 
     }
 
@@ -169,28 +173,32 @@ public class DashboardController implements Initializable {
     private Stage switchTo(Event e) throws IOException {
         Stage stage = null;
         Parent root = null;
-        Node node = (Node) e.getSource ();
+        Node node = (Node) e.getSource();
         if (node == addButton) {
-            logger.info ("addButton is clicked");
-            stage = (Stage) addButton.getScene ().getWindow ();
-            root = FXMLLoader.load (getClass ().getResource ("../view/addPanel.fxml"));
+            logger.info("addButton is clicked");
+            stage = (Stage) addButton.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../view/addPanel.fxml"));
         } else if (node == consultButton) {
-            logger.info ("consultButton is clicked");
-            stage = (Stage) consultButton.getScene ().getWindow ();
-            root = FXMLLoader.load (getClass ().getResource ("../view/consultPanel.fxml"));
+            logger.info("consultButton is clicked");
+            stage = (Stage) consultButton.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../view/consultPanel.fxml"));
         } else if (node == deleteButton) {
-            logger.info ("deleteButton is clicked");
-            stage = (Stage) deleteButton.getScene ().getWindow ();
-            root = FXMLLoader.load (getClass ().getResource ("../view/deletePanel.fxml"));
+            logger.info("deleteButton is clicked");
+            stage = (Stage) deleteButton.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../view/deletePanel.fxml"));
         } else if (node == sermonButton) {
-            logger.info ("sermonButton is clicked");
-            stage = (Stage) sermonButton.getScene ().getWindow ();
-            root = FXMLLoader.load (getClass ().getResource ("../view/sermonPanel.fxml"));
+            logger.info("sermonButton is clicked");
+            stage = (Stage) sermonButton.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../view/sermonPanel.fxml"));
+        } else if (node == statsButton) {
+            logger.info("statsButton is clicked");
+            stage = (Stage) statsButton.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../view/statsPanel.fxml"));
         }
         Scene scene = null;
-        if (root != null) scene = new Scene (root);
-        if (stage != null) stage.setScene (scene);
-        if (stage != null) stage.show ();
+        if (root != null) scene = new Scene(root);
+        if (stage != null) stage.setScene(scene);
+        if (stage != null) stage.show();
         return stage;
 
     }
@@ -198,21 +206,54 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        fadeTransition (anchorPane);
+        fadeTransition(anchorPane);
 //        anchorPane.setEffect(new DropShadow(BlurType.THREE_PASS_BOX, Color.BLACK, 2.0, 15.0, 8.0, 8.0));
         //anchorPane.setBackground(new Background(new BackgroundFill(Color.RED,new CornerRadii(1),new Insets(0))));
 
-        exit.setAccelerator (new KeyCodeCombination (KeyCode.Q, KeyCodeCombination.CONTROL_DOWN));
-        help.setAccelerator (new KeyCodeCombination (KeyCode.H, KeyCodeCombination.CONTROL_DOWN));
+        exit.setAccelerator(new KeyCodeCombination(KeyCode.Q, KeyCodeCombination.CONTROL_DOWN));
+        help.setAccelerator(new KeyCodeCombination(KeyCode.H, KeyCodeCombination.CONTROL_DOWN));
     }
 
-    public static void fadeTransition(Node node) {
-        FadeTransition fadeTransition = new FadeTransition (Duration.millis (800), node);
-        fadeTransition.setFromValue (0);
-        fadeTransition.setToValue (100);
-        fadeTransition.setCycleCount (1);
-        fadeTransition.setInterpolator (Interpolator.EASE_BOTH);
-        fadeTransition.play ();
+    public static void fadeTransition(AnchorPane node) {
+        FadeTransition ft = new FadeTransition(Duration.millis(400), node);
+        ft.setFromValue(0.6);
+        ft.setToValue(1);
+        ft.setInterpolator(Interpolator.EASE_OUT);
+
+        ScaleTransition st = new ScaleTransition(Duration.millis(300), node);
+//        scaleTransition.setFrX(1.1);
+       /* scaleTransition.setByY(1.1);
+        scaleTransition.setByX(1.1);*/
+//        st.setCycleCount(1);
+        st.setByX(1.004);
+        st.setByY(1.004);
+        st.setInterpolator(Interpolator.EASE_OUT);
+
+        ScaleTransition st1 = new ScaleTransition(Duration.millis(600), node);
+
+        st1.setFromX(1.004);
+        st1.setFromY(1.004);
+        st1.setToX(1.0);
+        st1.setToY(1.0);
+        st1.setInterpolator(Interpolator.EASE_OUT);
+
+
+        SequentialTransition sTr = new SequentialTransition(node, st, st1, ft);
+        sTr.setInterpolator(Interpolator.EASE_OUT);
+        sTr.play();
+       /* parallelTransition.setOnFinished(event -> {
+            scaleTransition.setByX(1.3);
+            scaleTransition.setByY(1.3);
+            scaleTransition.play();
+        });*/
+
+      /*  Timeline timeline = new Timeline();
+        timeline.getKeyFrames().addAll(
+                new KeyFrame(Duration.ZERO, new KeyValue(((AnchorPane) node).prefWidthProperty(), 0.0, Interpolator.EASE_BOTH)),
+                new KeyFrame(Duration.millis(300), new KeyValue(((AnchorPane) node).prefWidthProperty(), prefWidth, Interpolator.EASE_BOTH)),
+                new KeyFrame(Duration.millis(300), new KeyValue(node.opacityProperty(), 100.0, Interpolator.EASE_BOTH))
+        );
+        timeline.play();*/
     }
 
     @FXML
@@ -231,8 +272,8 @@ public class DashboardController implements Initializable {
         moveTrackingPopup.getContent().add(moveTrackingRect);
         moveTrackingPopup.show(anchorPane.getScene().getWindow());
         moveTrackingPopup.setOnHidden((e) -> resetMoveOperation());*/
-        pressedX = evt.getX ();
-        pressedY = evt.getY ();
+        pressedX = evt.getX();
+        pressedY = evt.getY();
     }
 
     private void resetMoveOperation() {
@@ -259,44 +300,44 @@ public class DashboardController implements Initializable {
             moveTrackingPopup.setY(stageY + (endMoveY - startMoveY));
         }*/
 
-        Stage theStage = (Stage) ((AnchorPane) evt.getSource ()).getScene ().getWindow ();
-        draggedX = evt.getX ();
-        draggedY = evt.getY ();
+        Stage theStage = (Stage) ((AnchorPane) evt.getSource()).getScene().getWindow();
+        draggedX = evt.getX();
+        draggedY = evt.getY();
 
         double differenceX = draggedX - pressedX;
         double differenceY = draggedY - pressedY;
 
-        theStage.setX (theStage.getX () + differenceX);
-        theStage.setY (theStage.getY () + differenceY);
+        theStage.setX(theStage.getX() + differenceX);
+        theStage.setY(theStage.getY() + differenceY);
 
     }
 
     @FXML
     public void endMoveWindow(MouseEvent evt) {
         if (dragging) {
-            double endMoveX = evt.getScreenX ();
-            double endMoveY = evt.getScreenY ();
+            double endMoveX = evt.getScreenX();
+            double endMoveY = evt.getScreenY();
 
-            Window w = anchorPane.getScene ().getWindow ();
+            Window w = anchorPane.getScene().getWindow();
 
-            double stageX = w.getX ();
-            double stageY = w.getY ();
+            double stageX = w.getX();
+            double stageY = w.getY();
 
-            w.setX (stageX + (endMoveX - startMoveX));
-            w.setY (stageY + (endMoveY - startMoveY));
+            w.setX(stageX + (endMoveX - startMoveX));
+            w.setY(stageY + (endMoveY - startMoveY));
 
             if (moveTrackingPopup != null) {
-                moveTrackingPopup.hide ();
+                moveTrackingPopup.hide();
                 moveTrackingPopup = null;
             }
         }
 
-        resetMoveOperation ();
+        resetMoveOperation();
     }
 
     @FXML
     public void minimize(MouseEvent mouseEvent) {
-        Stage stage = (Stage) ((Label) mouseEvent.getSource ()).getScene ().getWindow ();
-        stage.setIconified (true);
+        Stage stage = (Stage) ((Label) mouseEvent.getSource()).getScene().getWindow();
+        stage.setIconified(true);
     }
 }

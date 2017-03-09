@@ -40,49 +40,61 @@ public class AuthentificationController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        BooleanBinding bb = new BooleanBinding () {
+        usernameField.setText("gestadvent");
+        passwordField.setText("gestadvent");
+        BooleanBinding bb = new BooleanBinding() {
             {
-                super.bind (usernameField.textProperty (), passwordField.textProperty ());
+                super.bind(usernameField.textProperty(), passwordField.textProperty());
             }
 
             @Override
             protected boolean computeValue() {
-                return (usernameField.getText ().isEmpty () || passwordField.getText ().isEmpty ());
+                return (usernameField.getText().isEmpty() || passwordField.getText().isEmpty());
             }
         };
 
-        loginButton.disableProperty ().bind (bb);
+        loginButton.disableProperty().bind(bb);
 
-        DashboardController.fadeTransition (anchorPane);
+//        DashboardController.fadeTransition(anchorPane);
     }
 
     private boolean isValid(String user, String pass) {
         String userCheck = "", passCheck = "";
         try {
-            Connection connection = DBUtil.getConnexion ();
+            Connection connection = DBUtil.getConnexion();
+            if (!DBUtil.schemaExists(connection)) {
+                try {
+                    DBUtil.createSchema(connection);
+                } catch (ClassNotFoundException | SQLException e) {
+                    e.printStackTrace();
+                }
+            }
             String query = "SELECT * FROM user";
-            ResultSet rs = connection.createStatement ().executeQuery (query);
-            while (rs.next ()) {
-                userCheck = rs.getString (1).trim ();
-                passCheck = rs.getString (2).trim ();
+            ResultSet rs = connection.createStatement().executeQuery(query);
+            while (rs.next()) {
+                userCheck = rs.getString(1).trim();
+                passCheck = rs.getString(2).trim();
             }
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace ();
+            e.printStackTrace();
         }
-        return ((userCheck.equals (user)) && (passCheck.equals (pass)));
+        return ((userCheck.equals(user)) && (passCheck.equals(pass)));
     }
 
     public void initManager(final LoginManager loginManager) {
-        loginButton.setOnAction ((ActionEvent event) -> {
-            String user = usernameField.getText ().trim ();
-            String pass = passwordField.getText ().trim ();
-            if (isValid (user, pass)) {
-                Stage stage = (Stage) anchorPane.getScene ().getWindow ();
-                stage.hide ();
-                loginManager.showDashboard ();
+
+
+        loginButton.setOnAction((ActionEvent event) -> {
+            String user = usernameField.getText().trim();
+            String pass = passwordField.getText().trim();
+            if (isValid(user, pass)) {
+                Stage stage = (Stage) anchorPane.getScene().getWindow();
+                stage.hide();
+                loginManager.showDashboard();
             } else
-                statusLabel.setText ("Veuillez Reessayer !");
+                statusLabel.setText("Veuillez Reessayer !");
 
         });
     }
+
 }

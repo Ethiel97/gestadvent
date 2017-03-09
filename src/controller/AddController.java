@@ -37,6 +37,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Logger;
@@ -194,11 +195,10 @@ public class AddController implements Initializable {
         try {
 
             String title = "GESTADVENT NOTIFICATION", message;
-            int result;
+            final int[] result = new int[1];
             TrayNotification tray = new TrayNotification();
             Connection connection = DBUtil.getConnexion();
             MembreBDAO membreBDAO = new MembreBDAO(connection);
-
 
             Membre membre = new Membre();
             membre.setNom(nomField.getText());
@@ -207,6 +207,7 @@ public class AddController implements Initializable {
             membre.setExtra(extraField.getText());
             membre.setLieuNaissance(lieuNaissanceField.getText());
             membre.setDateNaissance(dateNaissancePicker.getValue());
+            membre.setAge(calculateAge(dateNaissancePicker.getValue()));
             membre.setSexe(sexeComboBox.getSelectionModel().getSelectedItem());
             membre.setEmail(emailField.getText());
             membre.setTelephone(telephoneField.getText());
@@ -228,9 +229,10 @@ public class AddController implements Initializable {
             alert.setContentText(bapteme.getPasteur()+" est le pasteur officiant");
             alert.show();
 */
-            result = membreBDAO.add(membre, bapteme);
-            if (1 < result) {
-                message = membre.getNom() + " " + membre.getPrenom().toUpperCase() + " bien enregistre(e)!";
+            result[0] = membreBDAO.add(membre, bapteme);
+
+            if (1 < result[0]) {
+                message = membre.getNom() + "\n" + membre.getPrenom().toUpperCase() + " bien enregistre(e)!";
                 tray.setTitle(title);
 //                tray.setImage(new Image(photoPathArea.getText()));
                 tray.setMessage(message);
@@ -284,7 +286,7 @@ public class AddController implements Initializable {
 
     @FXML
     public void backHome(MouseEvent mouseEvent) throws IOException {
-        Stage stage = (Stage)((ImageView)mouseEvent.getSource ()).getScene ().getWindow ();
+        Stage stage = (Stage) ((ImageView) mouseEvent.getSource()).getScene().getWindow();
         Parent root = FXMLLoader.load(getClass().getResource("../view/dashboard.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -295,4 +297,12 @@ public class AddController implements Initializable {
     public void resetProfil(ActionEvent actionEvent) {
         profil.setGraphic(null);
     }
+
+    public static int calculateAge(LocalDate birthday) {
+
+        LocalDate now = LocalDate.now();
+        return (int) ChronoUnit.YEARS.between(birthday, now);
+
+    }
+
 }

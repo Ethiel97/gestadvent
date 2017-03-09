@@ -1,2 +1,2 @@
 # gestadvent
-Adventist Church members management
+Adventist Church members management Software

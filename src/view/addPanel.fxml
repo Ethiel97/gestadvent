@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import java.net.URL?>
-<AnchorPane fx:id="anchorPane" prefHeight="928.0" prefWidth="1254.0" xmlns="http://javafx.com/javafx/8.0.102"
+<AnchorPane fx:id="anchorPane" prefHeight="928.0" prefWidth="1254.0" xmlns="http://javafx.com/javafx/8.0.112"
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddController">
     <stylesheets>
         <URL value="@../css/main.css"/>
@@ -15,135 +15,132 @@
     <children>
         <VBox prefHeight="928.0" prefWidth="1247.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <children>
-                <GridPane alignment="TOP_CENTER" prefHeight="54.0" prefWidth="1247.0" styleClass="headerBackground"
-                          VBox.vgrow="ALWAYS">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="ALWAYS" maxWidth="444.0" minWidth="10.0" prefWidth="232.0"/>
-                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1015.0" minWidth="10.0" prefWidth="1015.0"/>
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS"/>
-                    </rowConstraints>
-                    <children>
-                        <ImageView blendMode="SCREEN" fitHeight="65.0" fitWidth="85.0" pickOnBounds="true"
-                                   preserveRatio="true" VBox.vgrow="ALWAYS">
-                            <GridPane.margin>
-                                <Insets bottom="12.0" left="42.0" right="5.0" top="12.0"/>
-                            </GridPane.margin>
-                            <image>
-                                <Image preserveRatio="true" smooth="true" url="@../images/logo.png"/>
-                            </image>
-                        </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" prefWidth="433.0"
-                               styleClass="headerLabel" text="GESTADVENT - Gestion de membres"
-                               textOverrun="WORD_ELLIPSIS" GridPane.columnIndex="1" VBox.vgrow="ALWAYS">
-                            <font>
-                                <Font size="14.0"/>
-                            </font>
-                            <GridPane.margin>
-                                <Insets bottom="12.0" left="165.0" right="15.0" top="12.0"/>
-                            </GridPane.margin>
-                        </Label>
+            <GridPane alignment="TOP_CENTER" prefHeight="54.0" prefWidth="1247.0" styleClass="headerBackground"
+                      VBox.vgrow="ALWAYS">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="444.0" minWidth="10.0" prefWidth="232.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="1015.0" minWidth="10.0" prefWidth="1015.0"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS"/>
+                </rowConstraints>
+                <children>
+                    <ImageView blendMode="SCREEN" fitHeight="65.0" fitWidth="85.0" pickOnBounds="true"
+                               preserveRatio="true" VBox.vgrow="ALWAYS">
+                        <GridPane.margin>
+                            <Insets bottom="12.0" left="42.0" right="5.0" top="12.0"/>
+                        </GridPane.margin>
+                        <image>
+                            <Image preserveRatio="true" smooth="true" url="@../images/logo.png"/>
+                        </image>
+                    </ImageView>
+                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="477.0"
+                           styleClass="headerLabel" text="GESTADVENT - Gestion de membres" textOverrun="WORD_ELLIPSIS"
+                           GridPane.columnIndex="1" VBox.vgrow="ALWAYS">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                        <GridPane.margin>
+                            <Insets bottom="12.0" left="165.0" right="15.0" top="12.0"/>
+                        </GridPane.margin>
+                    </Label>
 
-                    </children>
-                </GridPane>
-                <AnchorPane prefHeight="796.0" prefWidth="1247.0" VBox.vgrow="ALWAYS">
-                    <children>
-                        <Label fx:id="profil" layoutX="926.0" layoutY="30.0" pickOnBounds="true" prefHeight="191.0"
-                               prefWidth="200.0" styleClass="profil" VBox.vgrow="ALWAYS"/>
-                        <Button fx:id="photoButton" layoutX="868.0" layoutY="229.0" mnemonicParsing="false"
-                                onAction="#openDialog" prefHeight="47.0" prefWidth="200.0"
-                                style="-fx-background-color: #239B2D; -fx-text-fill: white" text="Choisir une photo"
-                                VBox.vgrow="ALWAYS"/>
-                        <Label alignment="CENTER" contentDisplay="CENTER" layoutX="495.0" layoutY="14.0"
-                               prefHeight="53.0" prefWidth="258.0" style="-fx-font-size: 26px; -fx-font-weight: 700"
-                               text="Ajout de membres" VBox.vgrow="ALWAYS"/>
-                        <TextField fx:id="nomField" layoutX="73.0" layoutY="86.0" prefHeight="47.0" prefWidth="363.0"
-                                   promptText="Votre Nom" VBox.vgrow="ALWAYS"/>
-                        <TextField fx:id="prenomField" layoutX="73.0" layoutY="146.0" prefHeight="47.0"
-                                   prefWidth="363.0" promptText="Votre Prenom" VBox.vgrow="ALWAYS"/>
-                        <TextField fx:id="emailField" layoutX="73.0" layoutY="393.0" prefHeight="47.0" prefWidth="363.0"
-                                   promptText="Votre email" VBox.vgrow="ALWAYS"/>
-                        <TextField fx:id="lieuNaissanceField" layoutX="73.0" layoutY="266.0" prefHeight="47.0"
-                                   prefWidth="363.0" promptText="Lieu de naissance" VBox.vgrow="ALWAYS"/>
-                        <TextField fx:id="telephoneField" layoutX="73.0" layoutY="328.0" prefHeight="47.0"
-                                   prefWidth="363.0" promptText="Votre Telephone (mobile)" VBox.vgrow="ALWAYS"/>
-                        <DatePicker fx:id="dateNaissancePicker" layoutX="73.0" layoutY="207.0" prefHeight="47.0"
-                                    prefWidth="363.0" promptText="Date de naissance" VBox.vgrow="ALWAYS"/>
-                        <ComboBox fx:id="sexeComboBox" layoutX="73.0" layoutY="456.0" prefHeight="47.0"
-                                  prefWidth="363.0" promptText="Votre sexe" VBox.vgrow="ALWAYS"/>
-                        <TextArea fx:id="adresseField" layoutX="73.0" layoutY="527.0" prefHeight="152.0"
-                                  prefWidth="363.0" promptText="Votre adresse" VBox.vgrow="ALWAYS"/>
-                        <DatePicker fx:id="dateBaptemePicker" layoutX="499.0" layoutY="328.0" prefHeight="47.0"
-                                    prefWidth="314.0" promptText="Date de bapteme" VBox.vgrow="ALWAYS"/>
-                        <TextField fx:id="lieuBaptemeField" layoutX="499.0" layoutY="266.0" prefHeight="47.0"
-                                   prefWidth="314.0" promptText="Lieu de bapteme" VBox.vgrow="ALWAYS"/>
-                        <CheckBox fx:id="transfertCheckBox" layoutX="505.0" layoutY="463.0" mnemonicParsing="false"
-                                  prefHeight="18.0" prefWidth="141.0" text="Transfert" VBox.vgrow="ALWAYS"/>
-                        <TextField fx:id="pasteurField" layoutX="499.0" layoutY="393.0" prefHeight="47.0"
-                                   prefWidth="314.0" promptText="Pasteur officiant" VBox.vgrow="ALWAYS"/>
-                        <VBox layoutX="862.0" layoutY="478.0" prefHeight="182.0" prefWidth="351.0">
-                            <children>
-                                <TextArea fx:id="extraField" prefHeight="182.0" prefWidth="349.0"
-                                          promptText="Infos complementaires"/>
-                            </children>
-                        </VBox>
-                        <HBox layoutX="382.0" layoutY="746.0" prefHeight="80.0" prefWidth="544.0" VBox.vgrow="ALWAYS">
-                            <children>
-                                <Button fx:id="ajouterButton" mnemonicParsing="false" onAction="#ajouterMembre"
-                                        prefHeight="52.0" prefWidth="248.0" styleClass="ajouterButton"
-                                        text="Enregistrer" HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
-                                    <HBox.margin>
-                                        <Insets left="15.0" top="15.0"/>
-                                    </HBox.margin>
-                                </Button>
-                                <Button fx:id="annulerButton" mnemonicParsing="false" onAction="#annuler"
-                                        prefHeight="52.0" prefWidth="248.0" styleClass="annulerButton" text="Annuler"
-                                        HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
-                                    <HBox.margin>
-                                        <Insets left="15.0" top="15.0"/>
-                                    </HBox.margin>
-                                </Button>
-                            </children>
-                        </HBox>
-                        <ComboBox fx:id="matriComboBox" layoutX="495.0" layoutY="145.0" prefHeight="49.0"
-                                  prefWidth="314.0" promptText="Situation matrimoniale" VBox.vgrow="ALWAYS"/>
-                        <TextField fx:id="destinationField" layoutX="505.0" layoutY="522.0" prefHeight="47.0"
-                                   prefWidth="314.0" promptText="Eglise de destination" VBox.vgrow="ALWAYS"/>
-                        <TextField fx:id="provenanceField" layoutX="505.0" layoutY="580.0" prefHeight="47.0"
-                                   prefWidth="314.0" promptText="Eglise de provenance" VBox.vgrow="ALWAYS"/>
-                        <TextField fx:id="professionField" layoutX="495.0" layoutY="86.0" prefHeight="47.0"
-                                   prefWidth="314.0" promptText="Votre profession" VBox.vgrow="ALWAYS"/>
-                        <Label alignment="CENTER" layoutX="862.0" layoutY="415.0" prefHeight="51.0" prefWidth="258.0"
-                               style="-fx-font-weight: 700;" text="Infos Complementaires" textAlignment="CENTER"
-                               VBox.vgrow="ALWAYS"/>
-                        <ImageView fx:id="backHome" fitHeight="62.0" fitWidth="51.0" layoutX="73.0" layoutY="15.0"
-                                   onMouseClicked="#backHome" pickOnBounds="true" preserveRatio="true"
-                                   styleClass="backHome">
-                            <image>
-                                <Image url="@../images/Home-50.png"/>
-                            </image>
-                        </ImageView>
-                        <Separator layoutX="510.0" layoutY="502.0" prefHeight="0.0" prefWidth="305.0"/>
-                        <Label layoutX="495.0" layoutY="213.0" prefHeight="36.0" prefWidth="161.0"
-                               style="-fx-font-weight: 600; -fx-font-size: 25px;" text="Bapteme"/>
-                        <Separator layoutX="495.0" layoutY="248.0" prefHeight="3.0" prefWidth="305.0"/>
-                        <Separator layoutX="-1.0" layoutY="76.0" prefWidth="200.0"/>
-                        <Separator layoutX="112.0" layoutY="726.0" prefHeight="3.0" prefWidth="1016.0"/>
-                        <DatePicker fx:id="dateTransfertPicker" layoutX="505.0" layoutY="643.0" prefHeight="47.0"
-                                    prefWidth="314.0" promptText="Date de transfert"/>
-                        <Separator layoutX="196.0" layoutY="3.0" orientation="VERTICAL" prefHeight="71.0"
-                                   prefWidth="0.0"/>
-                        <TextArea fx:id="photoPathArea" layoutX="868.0" layoutY="294.0" prefHeight="89.0"
-                                  prefWidth="363.0"/>
-                        <Button fx:id="resetProfil" layoutX="1076.0" layoutY="229.0" mnemonicParsing="false"
-                                onAction="#resetProfil" prefHeight="47.0" prefWidth="118.0" text="Annuler"
-                                style="-fx-background-color: #e0da6e;-fx-text-fill: white"/>
+                </children>
+            </GridPane>
+            <AnchorPane prefHeight="849.0" prefWidth="1247.0" VBox.vgrow="ALWAYS">
+                <children>
+                    <Label fx:id="profil" layoutX="926.0" layoutY="30.0" pickOnBounds="true" prefHeight="191.0"
+                           prefWidth="200.0" styleClass="profil" VBox.vgrow="ALWAYS"/>
+                    <Button fx:id="photoButton" layoutX="855.0" layoutY="229.0" mnemonicParsing="false"
+                            onAction="#openDialog" prefHeight="47.0" prefWidth="213.0"
+                            style="-fx-background-color: #239B2D; -fx-text-fill: white" text="Choisir une photo"
+                            VBox.vgrow="ALWAYS"/>
+                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="495.0" layoutY="14.0" prefHeight="53.0"
+                           prefWidth="258.0" style="-fx-font-size: 26px; -fx-font-weight: 600;" text="Ajout de membres"
+                           VBox.vgrow="ALWAYS"/>
+                    <TextField fx:id="nomField" layoutX="73.0" layoutY="86.0" prefHeight="47.0" prefWidth="363.0"
+                               promptText="Votre Nom" VBox.vgrow="ALWAYS"/>
+                    <TextField fx:id="prenomField" layoutX="73.0" layoutY="146.0" prefHeight="47.0" prefWidth="363.0"
+                               promptText="Votre Prenom" VBox.vgrow="ALWAYS"/>
+                    <TextField fx:id="emailField" layoutX="73.0" layoutY="393.0" prefHeight="47.0" prefWidth="363.0"
+                               promptText="Votre email" VBox.vgrow="ALWAYS"/>
+                    <TextField fx:id="lieuNaissanceField" layoutX="73.0" layoutY="266.0" prefHeight="47.0"
+                               prefWidth="363.0" promptText="Lieu de naissance" VBox.vgrow="ALWAYS"/>
+                    <TextField fx:id="telephoneField" layoutX="73.0" layoutY="328.0" prefHeight="47.0" prefWidth="363.0"
+                               promptText="Votre Telephone (mobile)" VBox.vgrow="ALWAYS"/>
+                    <DatePicker fx:id="dateNaissancePicker" layoutX="73.0" layoutY="207.0" prefHeight="47.0"
+                                prefWidth="363.0" promptText="Date de naissance" VBox.vgrow="ALWAYS"/>
+                    <ComboBox fx:id="sexeComboBox" layoutX="73.0" layoutY="456.0" prefHeight="47.0" prefWidth="363.0"
+                              promptText="Votre sexe" VBox.vgrow="ALWAYS"/>
+                    <TextArea fx:id="adresseField" layoutX="73.0" layoutY="527.0" prefHeight="152.0" prefWidth="363.0"
+                              promptText="Votre adresse" VBox.vgrow="ALWAYS"/>
+                    <DatePicker fx:id="dateBaptemePicker" layoutX="499.0" layoutY="328.0" prefHeight="47.0"
+                                prefWidth="314.0" promptText="Date de bapteme" VBox.vgrow="ALWAYS"/>
+                    <TextField fx:id="lieuBaptemeField" layoutX="499.0" layoutY="266.0" prefHeight="47.0"
+                               prefWidth="314.0" promptText="Lieu de bapteme" VBox.vgrow="ALWAYS"/>
+                    <CheckBox fx:id="transfertCheckBox" layoutX="505.0" layoutY="463.0" mnemonicParsing="false"
+                              prefHeight="18.0" prefWidth="141.0" text="Transfert" VBox.vgrow="ALWAYS"/>
+                    <TextField fx:id="pasteurField" layoutX="499.0" layoutY="393.0" prefHeight="47.0" prefWidth="314.0"
+                               promptText="Pasteur officiant" VBox.vgrow="ALWAYS"/>
+                    <VBox layoutX="862.0" layoutY="478.0" prefHeight="182.0" prefWidth="351.0">
+                        <children>
+                            <TextArea fx:id="extraField" prefHeight="182.0" prefWidth="349.0"
+                                      promptText="Infos complementaires"/>
+                        </children>
+                    </VBox>
+                    <HBox layoutX="382.0" layoutY="746.0" prefHeight="80.0" prefWidth="544.0" VBox.vgrow="ALWAYS">
+                        <children>
+                            <Button fx:id="ajouterButton" mnemonicParsing="false" onAction="#ajouterMembre"
+                                    prefHeight="52.0" prefWidth="248.0" styleClass="ajouterButton" text="Enregistrer"
+                                    HBox.hgrow="ALWAYS" VBox.vgrow="ALWAYS">
+                                <HBox.margin>
+                                    <Insets left="15.0" top="15.0"/>
+                                </HBox.margin>
+                            </Button>
+                            <Button fx:id="annulerButton" mnemonicParsing="false" onAction="#annuler" prefHeight="52.0"
+                                    prefWidth="248.0" styleClass="annulerButton" text="Annuler" HBox.hgrow="ALWAYS"
+                                    VBox.vgrow="ALWAYS">
+                                <HBox.margin>
+                                    <Insets left="15.0" top="15.0"/>
+                                </HBox.margin>
+                            </Button>
+                        </children>
+                    </HBox>
+                    <ComboBox fx:id="matriComboBox" layoutX="495.0" layoutY="145.0" prefHeight="49.0" prefWidth="314.0"
+                              promptText="Situation matrimoniale" VBox.vgrow="ALWAYS"/>
+                    <TextField fx:id="destinationField" layoutX="505.0" layoutY="522.0" prefHeight="47.0"
+                               prefWidth="314.0" promptText="Eglise de destination" VBox.vgrow="ALWAYS"/>
+                    <TextField fx:id="provenanceField" layoutX="505.0" layoutY="580.0" prefHeight="47.0"
+                               prefWidth="314.0" promptText="Eglise de provenance" VBox.vgrow="ALWAYS"/>
+                    <TextField fx:id="professionField" layoutX="495.0" layoutY="86.0" prefHeight="47.0"
+                               prefWidth="314.0" promptText="Votre profession" VBox.vgrow="ALWAYS"/>
+                    <Label alignment="CENTER" layoutX="862.0" layoutY="415.0" prefHeight="51.0" prefWidth="258.0"
+                           style="-fx-font-weight: 600;" text="Infos Complementaires" textAlignment="CENTER"
+                           VBox.vgrow="ALWAYS"/>
+                    <ImageView fx:id="backHome" fitHeight="62.0" fitWidth="51.0" layoutX="73.0" layoutY="15.0"
+                               onMouseClicked="#backHome" pickOnBounds="true" preserveRatio="true"
+                               styleClass="backHome">
+                        <image>
+                            <Image url="@../images/Home-50.png"/>
+                        </image>
+                    </ImageView>
+                    <Separator layoutX="510.0" layoutY="502.0" prefHeight="0.0" prefWidth="305.0"/>
+                    <Label layoutX="495.0" layoutY="213.0" prefHeight="36.0" prefWidth="161.0"
+                           style="-fx-font-weight: 600; -fx-font-size: 25px;" text="Bapteme"/>
+                    <Separator layoutX="495.0" layoutY="248.0" prefHeight="3.0" prefWidth="305.0"/>
+                    <Separator layoutX="-1.0" layoutY="76.0" prefWidth="200.0"/>
+                    <Separator layoutX="112.0" layoutY="726.0" prefHeight="3.0" prefWidth="1016.0"/>
+                    <DatePicker fx:id="dateTransfertPicker" layoutX="505.0" layoutY="643.0" prefHeight="47.0"
+                                prefWidth="314.0" promptText="Date de transfert"/>
+                    <Separator layoutX="196.0" layoutY="3.0" orientation="VERTICAL" prefHeight="71.0" prefWidth="0.0"/>
+                    <TextArea fx:id="photoPathArea" layoutX="868.0" layoutY="294.0" prefHeight="89.0"
+                              prefWidth="363.0"/>
+                    <Button fx:id="resetProfil" layoutX="1076.0" layoutY="229.0" mnemonicParsing="false"
+                            onAction="#resetProfil" prefHeight="47.0" prefWidth="127.0"
+                            style="-fx-background-color: #e0da6e;-fx-text-fill: white" text="Annuler"/>
 
-                    </children>
-                </AnchorPane>
-            </children>
+                </children>
+            </AnchorPane>
         </VBox>
     </children>
 </AnchorPane>

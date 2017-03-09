@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import java.net.URL?>
+<AnchorPane fx:id="anchorPane" prefHeight="928.0" prefWidth="1254.0" xmlns="http://javafx.com/javafx/8.0.112"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.statsController">
+    <stylesheets>
+        <URL value="@../css/main.css"/>
+    </stylesheets>
+    <children>
+        <VBox layoutX="134.0" prefHeight="928.0" prefWidth="1254.0" AnchorPane.bottomAnchor="0.0"
+              AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <GridPane alignment="TOP_CENTER" prefHeight="54.0" prefWidth="1247.0" styleClass="headerBackground"
+                      VBox.vgrow="ALWAYS">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="444.0" minWidth="10.0" prefWidth="232.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="1015.0" minWidth="10.0" prefWidth="1015.0"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS"/>
+                </rowConstraints>
+                <children>
+                    <ImageView blendMode="SCREEN" fitHeight="65.0" fitWidth="85.0" pickOnBounds="true"
+                               preserveRatio="true" VBox.vgrow="ALWAYS">
+                        <GridPane.margin>
+                            <Insets bottom="12.0" left="42.0" right="5.0" top="12.0"/>
+                        </GridPane.margin>
+                        <Image preserveRatio="true" smooth="true" url="@../images/logo.png"/>
+                    </ImageView>
+                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="477.0"
+                           styleClass="headerLabel" text="GESTADVENT - Gestion de membres" textOverrun="WORD_ELLIPSIS"
+                           GridPane.columnIndex="1" VBox.vgrow="ALWAYS">
+                        <font>
+                            <Font size="14.0"/>
+                        </font>
+                        <GridPane.margin>
+                            <Insets bottom="12.0" left="165.0" right="15.0" top="12.0"/>
+                        </GridPane.margin>
+                    </Label>
+                </children>
+            </GridPane>
+            <AnchorPane prefHeight="849.0" prefWidth="1254.0" VBox.vgrow="ALWAYS">
+                <children>
+                    <TabPane layoutX="5.0" layoutY="91.0" prefHeight="702.0" prefWidth="1254.0"
+                             tabClosingPolicy="UNAVAILABLE">
+                        <tabs>
+                            <Tab text="Tranche d'age">
+                                <content>
+                                    <AnchorPane>
+                                        <children>
+                                            <PieChart fx:id="agePieChart" layoutX="237.0" layoutY="-2.0"
+                                                      prefHeight="642.0" prefWidth="928.0"
+                                                      title="Repartition par tranches d'ages">
+
+                                            </PieChart>
+                                            <Label alignment="CENTER" contentDisplay="TOP" layoutX="27.0" layoutY="58.0"
+                                                   prefHeight="31.0" prefWidth="177.0"
+                                                   style="-fx-font-size: 25; -fx-background-color: #dea42e;"
+                                                   text="Plus Vieux"/>
+                                            <TextField fx:id="maxNom" layoutX="24.0" layoutY="137.0" prefHeight="37.0"
+                                                       prefWidth="183.0"/>
+                                            <TextField fx:id="maxPrenom" layoutX="27.0" layoutY="193.0"
+                                                       prefHeight="37.0" prefWidth="180.0"/>
+                                            <TextField fx:id="maxAge" layoutX="26.0" layoutY="252.0" prefHeight="37.0"
+                                                       prefWidth="180.0"/>
+                                            <Label alignment="CENTER" layoutX="24.0" layoutY="360.0" prefHeight="31.0"
+                                                   prefWidth="188.0"
+                                                   style="-fx-background-color: #e0da2e; -fx-font-size: 25;"
+                                                   text="Plus jeune"/>
+                                            <Separator layoutX="27.0" layoutY="332.0" prefWidth="200.0"/>
+                                            <Separator layoutX="231.0" layoutY="24.0" orientation="VERTICAL"
+                                                       prefHeight="612.0" prefWidth="5.0"/>
+                                            <TextField fx:id="minNom" layoutX="25.0" layoutY="438.0" prefHeight="37.0"
+                                                       prefWidth="181.0"/>
+                                            <TextField fx:id="minPrenom" layoutX="25.0" layoutY="506.0"
+                                                       prefHeight="37.0" prefWidth="181.0"/>
+                                            <TextField fx:id="minAge" layoutX="25.0" layoutY="577.0" prefHeight="37.0"
+                                                       prefWidth="182.0"/>
+                                        </children>
+                                    </AnchorPane>
+                                </content>
+                            </Tab>
+                            <Tab text="Situation Matrimoniale">
+                                <PieChart fx:id="maritalPieChart" title="Situation matrimoniale des membres">
+
+                                </PieChart>
+                            </Tab>
+                            <Tab text="Repartition par sexe">
+                                <PieChart fx:id="sexePieChart" title="Repartition par sexe">
+
+                                </PieChart>
+                            </Tab>
+                            <Tab text="Tresorerie">
+
+                            </Tab>
+                        </tabs>
+                    </TabPane>
+                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="468.0" layoutY="14.0" prefHeight="49.0"
+                           prefWidth="337.0" style="-fx-font-size: 25px;" text="STATISTIQUES" textAlignment="CENTER"
+                           textOverrun="CENTER_ELLIPSIS"/>
+                    <ImageView fx:id="backHome" fitHeight="58.0" fitWidth="72.0" layoutX="72.0" layoutY="14.0"
+                               onMouseClicked="#backHome" pickOnBounds="true" preserveRatio="true"
+                               styleClass="backHome">
+                        <image>
+                            <Image url="@../images/Home-50.png"/>
+                        </image>
+                    </ImageView>
+                    <Separator layoutX="4.0" layoutY="81.0" prefHeight="3.0" prefWidth="1254.0"/>
+                </children>
+            </AnchorPane>
+        </VBox>
+    </children>
+</AnchorPane>

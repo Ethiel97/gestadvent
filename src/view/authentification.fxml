@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="357.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AuthentificationController">
+<AnchorPane fx:id="anchorPane" prefHeight="357.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AuthentificationController">
     <stylesheets>
         <URL value="@../css/main.css" />
     </stylesheets>
@@ -43,15 +43,15 @@
                         <Insets bottom="12.0" left="165.0" right="15.0" top="12.0" />
                     </GridPane.margin>
                 </Label>
-                <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                <AnchorPane prefHeight="47.0" prefWidth="649.0" GridPane.columnIndex="1" />
 
             </GridPane>
             <AnchorPane prefHeight="390.0" prefWidth="620.0">
-                <Label alignment="CENTER" layoutX="92.0" layoutY="69.0" prefHeight="46.0" prefWidth="118.0" style="-fx-font-size: 25px;" text="Username" />
+                <Label alignment="CENTER" layoutX="92.0" layoutY="69.0" prefHeight="46.0" prefWidth="141.0" style="-fx-font-size: 25px;" text="Username" />
                 <TextField fx:id="usernameField" layoutX="270.0" layoutY="63.0" prefHeight="57.0" prefWidth="240.0" promptText="Nom d'utilisateur" />
                 <PasswordField fx:id="passwordField" layoutX="270.0" layoutY="136.0" prefHeight="57.0" prefWidth="240.0" promptText="Mot de passe" />
-                <Label alignment="CENTER" layoutX="92.0" layoutY="147.0" prefHeight="31.0" prefWidth="118.0" style="-fx-font-size: 25px;" text="Password" />
-                <Button fx:id="loginButton" defaultButton="true" layoutX="320.0" layoutY="234.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="141.0" style="-fx-background-color: #e0da2e; -fx-background-radius: 10; -fx-border-radius: 10;" text="Connexion" styleClass="connectButton" />
+                <Label alignment="CENTER" layoutX="92.0" layoutY="147.0" prefHeight="31.0" prefWidth="141.0" style="-fx-font-size: 25px;" text="Password" />
+                <Button fx:id="loginButton" defaultButton="true" layoutX="314.0" layoutY="227.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="152.0" style="-fx-background-color: #e0da2e; -fx-background-radius: 10; -fx-border-radius: 10;" styleClass="connectButton" text="Connexion" />
                 <Label fx:id="statusLabel" layoutX="78.0" layoutY="227.0" prefHeight="57.0" prefWidth="192.0" textAlignment="CENTER" textFill="red" />
             </AnchorPane>
         </VBox>

@@ -2,9 +2,6 @@ package model;
 
 import javafx.beans.property.*;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.time.LocalDate;
 
@@ -14,6 +11,7 @@ import java.time.LocalDate;
 public class Membre {
 
     private IntegerProperty id;
+    private IntegerProperty age;
     private StringProperty nom;
     private StringProperty prenom;
     private StringProperty telephone;
@@ -27,22 +25,26 @@ public class Membre {
     private StringProperty extra;
     private ObjectProperty<LocalDate> dateNaissance;
 
+    public StringProperty adresseProperty() {
+        return adresse;
+    }
+
     public Membre() {
         this.id = new SimpleIntegerProperty();
         this.nom = new SimpleStringProperty();
         this.prenom = new SimpleStringProperty();
+        this.age = new SimpleIntegerProperty();
         this.telephone = new SimpleStringProperty();
         this.sexe = new SimpleStringProperty();
         this.profession = new SimpleStringProperty();
         this.email = new SimpleStringProperty();
         this.adresse = new SimpleStringProperty();
         this.situationM = new SimpleStringProperty();
-        try {
-            this.photo = new FileInputStream(new File("C:\\Users\\Dell\\Desktop\\FB_IMG_1474027668359.jpg"));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        this.dateNaissance = new SimpleObjectProperty<LocalDate>();
+
+        this.photo = this.getClass().getResourceAsStream("/images/avatar.png");
+
+
+        this.dateNaissance = new SimpleObjectProperty<>();
         this.lieuNaissance = new SimpleStringProperty();
         this.extra = new SimpleStringProperty();
     }
@@ -60,6 +62,7 @@ public class Membre {
         this.lieuNaissance = new SimpleStringProperty(lieuNaissance);
         this.extra = new SimpleStringProperty(extra);
         this.situationM = new SimpleStringProperty(situationM);
+        this.age = new SimpleIntegerProperty(14);
     }
 
 
@@ -217,4 +220,18 @@ public class Membre {
     public void setId(int id) {
         this.id.set(id);
     }
+
+    public int getAge() {
+        return age.get();
+    }
+
+    public IntegerProperty ageProperty() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age.set(age);
+    }
+
+
 }
