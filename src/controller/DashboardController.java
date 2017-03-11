@@ -1,9 +1,11 @@
 package controller;
 
+
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.ScaleTransition;
 import javafx.animation.SequentialTransition;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -36,6 +38,10 @@ import java.util.logging.Logger;
 public class DashboardController implements Initializable {
 
     private static final Logger logger = Logger.getLogger(DashboardController.class.getName());
+    @FXML
+    private Hyperlink linkLabel;
+    /*@FXML
+    private Label linklabel;*/
 
 
     @FXML
@@ -66,6 +72,8 @@ public class DashboardController implements Initializable {
     private VBox sermonButton;
     @FXML
     private VBox statsButton;
+    @FXML
+    private VBox tresorerieButton;
 
     double pressedX;
     double pressedY;
@@ -173,6 +181,7 @@ public class DashboardController implements Initializable {
     private Stage switchTo(Event e) throws IOException {
         Stage stage = null;
         Parent root = null;
+        Scene scene = null;
         Node node = (Node) e.getSource();
         if (node == addButton) {
             logger.info("addButton is clicked");
@@ -194,8 +203,12 @@ public class DashboardController implements Initializable {
             logger.info("statsButton is clicked");
             stage = (Stage) statsButton.getScene().getWindow();
             root = FXMLLoader.load(getClass().getResource("../view/statsPanel.fxml"));
+        } else if (node == tresorerieButton) {
+            logger.info("tresorerieButton is clicked");
+            stage = (Stage) tresorerieButton.getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("../view/tresoreriePanel.fxml"));
         }
-        Scene scene = null;
+
         if (root != null) scene = new Scene(root);
         if (stage != null) stage.setScene(scene);
         if (stage != null) stage.show();
@@ -206,6 +219,20 @@ public class DashboardController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
+        linkLabel.setOnAction(e -> {
+          /* HostServices hostServices =
+           getHostServices().showDocument("https://facebook.com/ethiel");*/
+
+            Application application = new Application() {
+                @Override
+                public void start(Stage primaryStage) throws Exception {
+
+                }
+            };
+            application.getHostServices().showDocument("http://www.facebook.com/ethiel97");
+        });
         fadeTransition(anchorPane);
 //        anchorPane.setEffect(new DropShadow(BlurType.THREE_PASS_BOX, Color.BLACK, 2.0, 15.0, 8.0, 8.0));
         //anchorPane.setBackground(new Background(new BackgroundFill(Color.RED,new CornerRadii(1),new Insets(0))));
@@ -339,5 +366,9 @@ public class DashboardController implements Initializable {
     public void minimize(MouseEvent mouseEvent) {
         Stage stage = (Stage) ((Label) mouseEvent.getSource()).getScene().getWindow();
         stage.setIconified(true);
+    }
+
+    public void openBrowser(MouseEvent mouseEvent) {
+
     }
 }

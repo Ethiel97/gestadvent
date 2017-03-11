@@ -27,6 +27,7 @@
     <children>
         <VBox prefHeight="928.0" prefWidth="1247.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
+<!--
                 <GridPane alignment="TOP_CENTER" prefHeight="54.0" prefWidth="1247.0" styleClass="headerBackground" VBox.vgrow="ALWAYS">
                     <columnConstraints>
                         <ColumnConstraints hgrow="ALWAYS" maxWidth="444.0" minWidth="10.0" prefWidth="304.0" />
@@ -52,6 +53,43 @@
                         </Label>
                     </children>
                 </GridPane>
+-->
+                <GridPane alignment="TOP_CENTER" prefHeight="54.0" prefWidth="1223.0" styleClass="headerBackground" VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="444.0" minWidth="10.0" prefWidth="224.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1015.0" minWidth="10.0" prefWidth="815.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="444.0" minWidth="10.0" prefWidth="232.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                    </rowConstraints>
+                    <children>
+                        <ImageView blendMode="SCREEN" fitHeight="65.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="42.0" right="5.0" top="12.0" />
+                            </GridPane.margin>
+                            <image>
+                                <Image preserveRatio="true" smooth="true" url="@../images/logo.png" />
+                            </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="477.0" styleClass="headerLabel" text="GESTADVENT - Gestion de membres" textOverrun="WORD_ELLIPSIS" GridPane.columnIndex="1" VBox.vgrow="ALWAYS">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="165.0" right="15.0" top="12.0" />
+                            </GridPane.margin>
+                        </Label>
+                        <ImageView blendMode="SCREEN" fitHeight="65.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" VBox.vgrow="ALWAYS">
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="118.0" right="5.0" top="12.0" />
+                            </GridPane.margin>
+                            <image>
+                                <Image preserveRatio="true" smooth="true" url="@../images/logo.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </GridPane>
                 <AnchorPane prefHeight="849.0" prefWidth="1247.0" VBox.vgrow="ALWAYS">
                     <ImageView fx:id="backHome" fitHeight="62.0" fitWidth="51.0" layoutX="73.0" layoutY="15.0" onMouseClicked="#backHome" pickOnBounds="true" preserveRatio="true" styleClass="backHome">
                         <Image url="@../images/Home-50.png" />
@@ -73,7 +111,7 @@
                             </ImageView>
                         </graphic>
                     </Button>
-                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="457.0" layoutY="90.0" prefHeight="35.0" prefWidth="387.0" style="-fx-font-size: 24px; -fx-font-weight: 700;" text="Liste des membres inactifs" />
+                    <Label alignment="CENTER" contentDisplay="CENTER" layoutX="457.0" layoutY="90.0" prefHeight="35.0" prefWidth="387.0" style="-fx-font-size: 24px; -fx-font-weight: 700;" text="Liste des membres en archive" />
                     <Separator layoutY="80.0" prefWidth="1247.0" />
                     <ScrollPane layoutY="133.0" prefHeight="664.0" prefWidth="1254.0">
                         <content>

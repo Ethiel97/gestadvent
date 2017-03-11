@@ -16,9 +16,9 @@ public class Main extends Application {
         rootPane.setStyle("-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.4), 10, 0.5, 0.0, 0.0) !important;" +
                 "-fx-background-color: white !important;");
 */
-        Scene scene = new Scene (new AnchorPane ());
-        LoginManager loginManager = new LoginManager (scene);
-        loginManager.showLoginScreen ();
+        Scene scene = new Scene(new AnchorPane());
+        LoginManager loginManager = new LoginManager(scene);
+        loginManager.showLoginScreen();
 
        /* primaryStage.setTitle ("GESTADVENT");
         primaryStage.centerOnScreen ();*/
@@ -29,12 +29,12 @@ public class Main extends Application {
 
     @Override
     public void init() throws Exception {
-        super.init ();
+        super.init();
     }
 
     public static void main(String[] args) {
 
 //        LauncherImpl.launchApplication(Main.class, MyPreloader.class, args);
-        launch (args);
+        launch(args);
     }
 }

@@ -1,6 +1,7 @@
 package controller;
 
 import DB.DBUtil;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -87,9 +88,14 @@ public class statsController implements Initializable {
             ageStats = membreBDAO.getPieChartData("AGE");
             maritalStats = membreBDAO.getPieChartData("MARITAL");
             sexeStats = membreBDAO.getPieChartData("SEXE");
-            agePieChart.setData(ageStats);
+            Platform.runLater(() -> {
+                agePieChart.setData(ageStats);
+                maritalPieChart.setData(maritalStats);
+                sexePieChart.setData(sexeStats);
+            });
+           /* agePieChart.setData(ageStats);
             maritalPieChart.setData(maritalStats);
-            sexePieChart.setData(sexeStats);
+            sexePieChart.setData(sexeStats);*/
             this.addSliceTooltip(agePieChart);
             this.addSliceTooltip(maritalPieChart);
             this.addSliceTooltip(sexePieChart);

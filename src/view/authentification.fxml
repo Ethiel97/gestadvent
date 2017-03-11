@@ -1,58 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane fx:id="anchorPane" prefHeight="357.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AuthentificationController">
+<?import java.net.URL?>
+<AnchorPane fx:id="anchorPane" prefHeight="357.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/8.0.112"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AuthentificationController">
     <stylesheets>
-        <URL value="@../css/main.css" />
+        <URL value="@../css/main.css"/>
     </stylesheets>
     <children>
-        <VBox prefHeight="524.0" prefWidth="697.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <GridPane alignment="TOP_CENTER" prefHeight="126.0" prefWidth="620.0" styleClass="headerBackground" VBox.vgrow="ALWAYS">
+        <VBox prefHeight="524.0" prefWidth="697.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <GridPane alignment="TOP_CENTER" prefHeight="126.0" prefWidth="620.0" styleClass="headerBackground"
+                      VBox.vgrow="ALWAYS">
                 <columnConstraints>
-                    <ColumnConstraints hgrow="ALWAYS" maxWidth="444.0" minWidth="10.0" prefWidth="304.0" />
-                    <ColumnConstraints hgrow="ALWAYS" maxWidth="943.0" minWidth="10.0" prefWidth="943.0" />
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="444.0" minWidth="10.0" prefWidth="304.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="943.0" minWidth="10.0" prefWidth="643.0"/>
+                    <ColumnConstraints hgrow="ALWAYS" maxWidth="303.0" minWidth="10.0" prefWidth="303.0"/>
                 </columnConstraints>
                 <rowConstraints>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS"/>
                 </rowConstraints>
-                <ImageView blendMode="SCREEN" fitHeight="42.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                <ImageView blendMode="SCREEN" fitHeight="42.0" fitWidth="51.0" pickOnBounds="true" preserveRatio="true"
+                           VBox.vgrow="ALWAYS">
                     <GridPane.margin>
-                        <Insets bottom="12.0" left="42.0" right="5.0" top="12.0" />
+                        <Insets bottom="12.0" left="42.0" right="5.0" top="12.0"/>
                     </GridPane.margin>
-                    <Image preserveRatio="true" smooth="true" url="@../images/logo.png" />
+                    <Image preserveRatio="true" smooth="true" url="@../images/logo.png"/>
                 </ImageView>
-                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" prefWidth="437.0" styleClass="headerLabel" text="GESTADVENT - Gestion de membres" textOverrun="WORD_ELLIPSIS" GridPane.columnIndex="1" VBox.vgrow="ALWAYS">
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" prefWidth="437.0"
+                       styleClass="headerLabel" text="GESTADVENT - Gestion de membres" textOverrun="WORD_ELLIPSIS"
+                       GridPane.columnIndex="1" VBox.vgrow="ALWAYS">
                     <font>
-                        <Font size="14.0" />
+                        <Font size="14.0"/>
                     </font>
                     <GridPane.margin>
-                        <Insets bottom="12.0" left="165.0" right="15.0" top="12.0" />
+                        <Insets bottom="12.0" left="15.0" right="15.0" top="12.0"/>
                     </GridPane.margin>
                 </Label>
-                <AnchorPane prefHeight="47.0" prefWidth="649.0" GridPane.columnIndex="1" />
+                <ImageView blendMode="SCREEN" fitHeight="42.0" fitWidth="51.0" GridPane.columnIndex="2"
+                           pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                    <GridPane.margin>
+                        <Insets bottom="12.0" left="12.0" right="5.0" top="12.0"/>
+                    </GridPane.margin>
+                    <Image preserveRatio="true" smooth="true" url="@../images/logo.png"/>
+                </ImageView>
+                <AnchorPane prefHeight="47.0" prefWidth="408.0" GridPane.columnIndex="1"/>
 
             </GridPane>
             <AnchorPane prefHeight="390.0" prefWidth="620.0">
-                <Label alignment="CENTER" layoutX="92.0" layoutY="69.0" prefHeight="46.0" prefWidth="141.0" style="-fx-font-size: 25px;" text="Username" />
-                <TextField fx:id="usernameField" layoutX="270.0" layoutY="63.0" prefHeight="57.0" prefWidth="240.0" promptText="Nom d'utilisateur" />
-                <PasswordField fx:id="passwordField" layoutX="270.0" layoutY="136.0" prefHeight="57.0" prefWidth="240.0" promptText="Mot de passe" />
-                <Label alignment="CENTER" layoutX="92.0" layoutY="147.0" prefHeight="31.0" prefWidth="141.0" style="-fx-font-size: 25px;" text="Password" />
-                <Button fx:id="loginButton" defaultButton="true" layoutX="314.0" layoutY="227.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="152.0" style="-fx-background-color: #e0da2e; -fx-background-radius: 10; -fx-border-radius: 10;" styleClass="connectButton" text="Connexion" />
-                <Label fx:id="statusLabel" layoutX="78.0" layoutY="227.0" prefHeight="57.0" prefWidth="192.0" textAlignment="CENTER" textFill="red" />
+                <Label alignment="CENTER" layoutX="92.0" layoutY="69.0" prefHeight="46.0" prefWidth="141.0"
+                       style="-fx-font-size: 25px;" text="Username"/>
+                <TextField fx:id="usernameField" layoutX="270.0" layoutY="63.0" prefHeight="57.0" prefWidth="240.0"
+                           promptText="Nom d'utilisateur"/>
+                <PasswordField fx:id="passwordField" layoutX="270.0" layoutY="136.0" prefHeight="57.0" prefWidth="240.0"
+                               promptText="Mot de passe"/>
+                <Label alignment="CENTER" layoutX="92.0" layoutY="147.0" prefHeight="31.0" prefWidth="141.0"
+                       style="-fx-font-size: 25px;" text="Password"/>
+                <Button fx:id="loginButton" defaultButton="true" layoutX="314.0" layoutY="227.0" mnemonicParsing="false"
+                        prefHeight="43.0" prefWidth="152.0"
+                        style="-fx-background-color: #e0da2e; -fx-background-radius: 10; -fx-border-radius: 10;"
+                        styleClass="connectButton" text="Connexion"/>
+                <Label fx:id="statusLabel" layoutX="78.0" layoutY="227.0" prefHeight="57.0" prefWidth="192.0"
+                       textAlignment="CENTER" textFill="red"/>
             </AnchorPane>
         </VBox>
     </children>

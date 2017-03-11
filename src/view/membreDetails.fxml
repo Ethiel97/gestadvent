@@ -16,6 +16,7 @@
         <VBox layoutY="-17.0" prefHeight="724.0" prefWidth="963.0" AnchorPane.bottomAnchor="0.0"
               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
+<!--
                 <GridPane alignment="TOP_CENTER" prefHeight="80.0" prefWidth="963.0" styleClass="headerBackground"
                           VBox.vgrow="ALWAYS">
                     <columnConstraints>
@@ -49,6 +50,46 @@
 
                     </children>
                 </GridPane>
+-->
+                <GridPane alignment="TOP_CENTER" prefHeight="80.0" prefWidth="963.0" styleClass="headerBackground" VBox.vgrow="ALWAYS">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="444.0" minWidth="10.0" prefWidth="304.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="943.0" minWidth="10.0" prefWidth="643.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="300.0" minWidth="10.0" prefWidth="303.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
+                    </rowConstraints>
+                    <children>
+                        <ImageView blendMode="SCREEN" fitHeight="36.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="42.0" right="5.0" top="12.0" />
+                            </GridPane.margin>
+                            <image>
+
+                                <Image preserveRatio="true" smooth="true" url="@../images/logo.png" />
+                            </image>
+                        </ImageView>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" prefWidth="433.0" style="-fx-font-size: 20px;" styleClass="headerLabel" text="GESTADVENT - Infos membres" textOverrun="WORD_ELLIPSIS" GridPane.columnIndex="1" VBox.vgrow="ALWAYS">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="65.0" right="15.0" top="12.0" />
+                            </GridPane.margin>
+                        </Label>
+                        <ImageView blendMode="SCREEN" fitHeight="36.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" VBox.vgrow="ALWAYS">
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="125.0" right="5.0" top="12.0" />
+                            </GridPane.margin>
+                            <image>
+
+                                <Image preserveRatio="true" smooth="true" url="@../images/logo.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </GridPane>
+
                 <AnchorPane prefHeight="716.0" prefWidth="963.0">
                     <children>
                         <TextField fx:id="nomField" layoutX="78.0" layoutY="32.0" prefHeight="37.0" prefWidth="235.0"

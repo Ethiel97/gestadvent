@@ -18,7 +18,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="724.0" prefWidth="963.0" xmlns="http://javafx.com/javafx/8.0.102" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MembreInactiveDetailsController">
+<AnchorPane fx:id="anchorPane" prefHeight="724.0" prefWidth="963.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MembreInactiveDetailsController">
     <stylesheets>
         <URL value="@../css/main.css" />
     </stylesheets>
@@ -28,7 +28,8 @@
                 <GridPane alignment="TOP_CENTER" prefHeight="80.0" prefWidth="963.0" styleClass="headerBackground" VBox.vgrow="ALWAYS">
                     <columnConstraints>
                         <ColumnConstraints hgrow="ALWAYS" maxWidth="444.0" minWidth="10.0" prefWidth="304.0" />
-                        <ColumnConstraints hgrow="ALWAYS" maxWidth="943.0" minWidth="10.0" prefWidth="943.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="943.0" minWidth="10.0" prefWidth="643.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="300.0" minWidth="10.0" prefWidth="303.0" />
                     </columnConstraints>
                     <rowConstraints>
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
@@ -43,15 +44,23 @@
                                 <Image preserveRatio="true" smooth="true" url="@../images/logo.png" />
                             </image>
                         </ImageView>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" prefWidth="433.0" style="-fx-font-size: 25px;" styleClass="headerLabel" text="GESTADVENT - Infos membres" textOverrun="WORD_ELLIPSIS" GridPane.columnIndex="1" VBox.vgrow="ALWAYS">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="22.0" prefWidth="433.0" style="-fx-font-size: 20px;" styleClass="headerLabel" text="GESTADVENT - Infos membres" textOverrun="WORD_ELLIPSIS" GridPane.columnIndex="1" VBox.vgrow="ALWAYS">
                             <font>
                                 <Font size="14.0" />
                             </font>
                             <GridPane.margin>
-                                <Insets bottom="12.0" left="165.0" right="15.0" top="12.0" />
+                                <Insets bottom="12.0" left="65.0" right="15.0" top="12.0" />
                             </GridPane.margin>
                         </Label>
+                        <ImageView blendMode="SCREEN" fitHeight="36.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" VBox.vgrow="ALWAYS">
+                            <GridPane.margin>
+                                <Insets bottom="12.0" left="125.0" right="5.0" top="12.0" />
+                            </GridPane.margin>
+                            <image>
 
+                                <Image preserveRatio="true" smooth="true" url="@../images/logo.png" />
+                            </image>
+                        </ImageView>
                     </children>
                 </GridPane>
                 <AnchorPane prefHeight="716.0" prefWidth="963.0">

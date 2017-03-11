@@ -425,4 +425,28 @@ public class MembreBDAO extends DAO<Membre, Bapteme> {
 
         return membres;
     }
+
+    public ObservableList<Membre> populateChoiceBox() {
+        ObservableList<Membre> membres = FXCollections.observableArrayList();
+        Statement st = null;
+        ResultSet rs = null;
+        String query = "SELECT id,nom,prenom FROM membre";
+
+        try {
+            st = con.createStatement();
+            rs = st.executeQuery(query);
+            while (rs.next()) {
+                Membre membre = new Membre();
+                membre.setId(rs.getInt(1));
+                membre.setNom(rs.getString(2));
+                membre.setPrenom(rs.getString(3));
+                membres.add(membre);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return membres;
+
+    }
 }

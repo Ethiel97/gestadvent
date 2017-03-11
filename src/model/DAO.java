@@ -9,7 +9,7 @@ import java.sql.Connection;
  */
 public abstract class DAO<M, B> {
 
-    protected static Connection con = null;
+    static Connection con = null;
 
     public DAO(Connection con) {
         DAO.con = con;

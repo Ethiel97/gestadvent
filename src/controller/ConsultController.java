@@ -3,6 +3,7 @@ package controller;/**
  */
 
 import DB.DBUtil;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -240,7 +241,9 @@ public class ConsultController implements Initializable {
             sortedList = new SortedList<>(filteredList);
             sortedList.comparatorProperty().bind(tableViewMember.comparatorProperty());
             tableViewMember.setItems(sortedList);*/
-            tableViewMember.setItems(membreData);
+
+//            tableViewMember.setItems(membreData);
+            Platform.runLater(() -> tableViewMember.setItems(membreData));
             System.out.println(criteria + " le critere en question");
 
         } catch (SQLException | ClassNotFoundException e) {
@@ -311,12 +314,13 @@ public class ConsultController implements Initializable {
         adresseColumn.setCellValueFactory(new PropertyValueFactory<Membre, String>("adresse"));
         tableViewMember.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
+
         try {
             connection = DBUtil.getConnexion();
             membreBDAO = new MembreBDAO(connection);
             ObservableList<Membre> membreData = membreBDAO.getList(status);
-            tableViewMember.setItems(membreData);
 
+            Platform.runLater(() -> tableViewMember.setItems(membreData));
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -351,7 +355,8 @@ public class ConsultController implements Initializable {
             });
             sortedList = new SortedList<>(filteredList);
             sortedList.comparatorProperty().bind(tableViewMember.comparatorProperty());
-            tableViewMember.setItems(sortedList);
+//            tableViewMember.setItems(sortedList);
+            Platform.runLater(() -> tableViewMember.setItems(sortedList));
         });
     }
 }

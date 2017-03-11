@@ -1,6 +1,7 @@
 package controller;
 
 import DB.DBUtil;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -81,55 +82,55 @@ public class DeleteController implements Initializable {
 
     private MembreBDAO membreBDAO;
     private Connection connection;
-    private ObservableList<String> criteriaList = FXCollections.observableArrayList ("Id", "Nom", "Sexe", "Email", "Profession");
+    private ObservableList<String> criteriaList = FXCollections.observableArrayList("Id", "Nom", "Sexe", "Email", "Profession");
     private String status = "inactive";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        DashboardController.fadeTransition (anchorPane);
-        criteriaComboBox.getItems ().addAll (criteriaList);
-        criteriaComboBox.getSelectionModel ().select (0);
-        Tooltip t = new Tooltip ("Cliquez ici pour retourner au Dashboard");
-        Tooltip.install (backHome, t);
-        Tooltip t1 = new Tooltip ("Imprimer");
-        Tooltip.install (printButton, t1);
-        Tooltip t2 = new Tooltip ("Rafraichir la liste");
-        Tooltip.install (refreshButton, t2);
-        Tooltip t3 = new Tooltip ("Rechercher");
-        Tooltip.install (searchButton, t3);
-        Tooltip t4 = new Tooltip ("Exporter vers Excel");
-        Tooltip.install (exportExcelButton, t4);
-        backHome.setCursor (Cursor.HAND);
+        DashboardController.fadeTransition(anchorPane);
+        criteriaComboBox.getItems().addAll(criteriaList);
+        criteriaComboBox.getSelectionModel().select(0);
+        Tooltip t = new Tooltip("Cliquez ici pour retourner au Dashboard");
+        Tooltip.install(backHome, t);
+        Tooltip t1 = new Tooltip("Imprimer");
+        Tooltip.install(printButton, t1);
+        Tooltip t2 = new Tooltip("Rafraichir la liste");
+        Tooltip.install(refreshButton, t2);
+        Tooltip t3 = new Tooltip("Rechercher");
+        Tooltip.install(searchButton, t3);
+        Tooltip t4 = new Tooltip("Exporter vers Excel");
+        Tooltip.install(exportExcelButton, t4);
+        backHome.setCursor(Cursor.HAND);
 
-        searchButton.setOnAction (e -> {
-            searchFilterTableView ();
+        searchButton.setOnAction(e -> {
+            searchFilterTableView();
         });
-        populateTableView ();
-        searchFilterTableView ();
+        populateTableView();
+        searchFilterTableView();
 
-        tableViewMember.getSelectionModel ().selectedItemProperty ().addListener (new ChangeListener<Membre> () {
+        tableViewMember.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Membre>() {
             @Override
             public void changed(ObservableValue<? extends Membre> observable, Membre oldValue, Membre newValue) {
-                FXMLLoader loader = new FXMLLoader (getClass ().getResource ("../view/membreInactiveDetails.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/membreInactiveDetails.fxml"));
                 try {
 //                    logger.info(newValue.getNom() + " " + newValue.getPrenom());
-                    Parent parent = loader.load ();
-                    MembreInactiveDetailsController membreInactiveDetailsController = loader.getController ();
-                    Bapteme bapteme = new Bapteme ();
-                    connection = DBUtil.getConnexion ();
-                    membreBDAO = new MembreBDAO (connection);
-                    Object[] data = membreBDAO.getUnique (newValue, bapteme);
-                    membreInactiveDetailsController.initData ((Membre) data[0], (Bapteme) data[1]);
-                    Stage stage = new Stage ();
-                    Scene scene = new Scene (parent);
-                    stage.initModality (Modality.APPLICATION_MODAL);
-                    stage.initOwner (anchorPane.getScene ().getWindow ());
-                    stage.setScene (scene);
-                    stage.setResizable (false);
-                    stage.show ();
+                    Parent parent = loader.load();
+                    MembreInactiveDetailsController membreInactiveDetailsController = loader.getController();
+                    Bapteme bapteme = new Bapteme();
+                    connection = DBUtil.getConnexion();
+                    membreBDAO = new MembreBDAO(connection);
+                    Object[] data = membreBDAO.getUnique(newValue, bapteme);
+                    membreInactiveDetailsController.initData((Membre) data[0], (Bapteme) data[1]);
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(parent);
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.initOwner(anchorPane.getScene().getWindow());
+                    stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.show();
                 } catch (IOException | SQLException | ClassNotFoundException e) {
-                    e.printStackTrace ();
+                    e.printStackTrace();
                 }
             }
         });
@@ -139,16 +140,16 @@ public class DeleteController implements Initializable {
     private void backHome(MouseEvent mouseEvent) {
         Scene scene;
         Parent root = null;
-        Stage stage = (Stage)((ImageView)mouseEvent.getSource ()).getScene ().getWindow ();
+        Stage stage = (Stage) ((ImageView) mouseEvent.getSource()).getScene().getWindow();
         try {
-            root = FXMLLoader.load (getClass ().getResource ("../view/dashboard.fxml"));
+            root = FXMLLoader.load(getClass().getResource("../view/dashboard.fxml"));
         } catch (IOException e) {
-            e.printStackTrace ();
+            e.printStackTrace();
         }
-        assert root != null;
-        scene = new Scene (root);
-        stage.setScene (scene);
-        stage.show ();
+//        assert root != null;
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 
@@ -156,81 +157,85 @@ public class DeleteController implements Initializable {
     private void refreshTableView(ActionEvent event) {
         try {
             String status = "inactive";
-            connection = DBUtil.getConnexion ();
-            membreBDAO = new MembreBDAO (connection);
+            connection = DBUtil.getConnexion();
+            membreBDAO = new MembreBDAO(connection);
             String criteria;
-            if (criteriaComboBox.getSelectionModel ().getSelectedItem ().toString () != null)
-                criteria = criteriaComboBox.getSelectionModel ().getSelectedItem ().toString ();
+            if (criteriaComboBox.getSelectionModel().getSelectedItem().toString() != null)
+                criteria = criteriaComboBox.getSelectionModel().getSelectedItem().toString();
             else
                 criteria = "Nom";
-            ObservableList<Membre> membreData = membreBDAO.getMembreListWithCriteria (status, criteria);
-            filteredList = new FilteredList<> (membreBDAO.getList (status), p -> true);
-            sortedList = new SortedList<> (filteredList);
-            sortedList.comparatorProperty ().bind (tableViewMember.comparatorProperty ());
+            ObservableList<Membre> membreData = membreBDAO.getMembreListWithCriteria(status, criteria);
+            filteredList = new FilteredList<>(membreBDAO.getList(status), p -> true);
+            sortedList = new SortedList<>(filteredList);
+            sortedList.comparatorProperty().bind(tableViewMember.comparatorProperty());
 //            tableViewMember.setItems(sortedList);
-            tableViewMember.setItems (membreData);
+            Platform.runLater(() -> tableViewMember.setItems(membreData));
 
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace ();
+            e.printStackTrace();
         }
     }
 
     private void populateTableView() {
-        idColumn.setCellValueFactory (new PropertyValueFactory<Membre, Integer> ("id"));
-        nomColumn.setCellValueFactory (new PropertyValueFactory<Membre, String> ("nom"));
-        prenomColumn.setCellValueFactory (new PropertyValueFactory<Membre, String> ("prenom"));
-        sexeColumn.setCellValueFactory (new PropertyValueFactory<Membre, String> ("sexe"));
-        naissanceColumn.setCellValueFactory (new PropertyValueFactory<Membre, LocalDate> ("dateNaissance"));
-        situationMColumn.setCellValueFactory (new PropertyValueFactory<Membre, LocalDate> ("situationM"));
-        emailColumn.setCellValueFactory (new PropertyValueFactory<Membre, String> ("email"));
-        professionColumn.setCellValueFactory (new PropertyValueFactory<Membre, String> ("profession"));
-        telephoneColumn.setCellValueFactory (new PropertyValueFactory<Membre, String> ("telephone"));
-        adresseColumn.setCellValueFactory (new PropertyValueFactory<Membre, String> ("adresse"));
-        tableViewMember.getSelectionModel ().setSelectionMode (SelectionMode.SINGLE);
+        idColumn.setCellValueFactory(new PropertyValueFactory<Membre, Integer>("id"));
+        nomColumn.setCellValueFactory(new PropertyValueFactory<Membre, String>("nom"));
+        prenomColumn.setCellValueFactory(new PropertyValueFactory<Membre, String>("prenom"));
+        sexeColumn.setCellValueFactory(new PropertyValueFactory<Membre, String>("sexe"));
+        naissanceColumn.setCellValueFactory(new PropertyValueFactory<Membre, LocalDate>("dateNaissance"));
+        situationMColumn.setCellValueFactory(new PropertyValueFactory<Membre, LocalDate>("situationM"));
+        emailColumn.setCellValueFactory(new PropertyValueFactory<Membre, String>("email"));
+        professionColumn.setCellValueFactory(new PropertyValueFactory<Membre, String>("profession"));
+        telephoneColumn.setCellValueFactory(new PropertyValueFactory<Membre, String>("telephone"));
+        adresseColumn.setCellValueFactory(new PropertyValueFactory<Membre, String>("adresse"));
+        tableViewMember.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
 
         try {
-            connection = DBUtil.getConnexion ();
-            membreBDAO = new MembreBDAO (connection);
-            ObservableList<Membre> membreData = membreBDAO.getList (status);
-            tableViewMember.setItems (membreData);
+            connection = DBUtil.getConnexion();
+            membreBDAO = new MembreBDAO(connection);
+            ObservableList<Membre> membreData = membreBDAO.getList(status);
+            Platform.runLater(() -> {
+                tableViewMember.setItems(membreData);
+            });
+
         } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace ();
+            e.printStackTrace();
         }
     }
 
     private void searchFilterTableView() {
-        filteredList = new FilteredList<> (membreBDAO.getList (status), p -> true);
-        searchField.textProperty ().addListener ((observable, oldValue, newValue) -> {
+        filteredList = new FilteredList<>(membreBDAO.getList(status), p -> true);
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
 
-            filteredList.setPredicate (membre -> {
-                if (newValue == null || newValue.isEmpty ()) {
+            filteredList.setPredicate(membre -> {
+                if (newValue == null || newValue.isEmpty()) {
                     return true;
                 }
-                String lowerCaseFilter = newValue.toLowerCase ();
-                if (membre.getNom ().toLowerCase ().contains (lowerCaseFilter)) {
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (membre.getNom().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (membre.getAdresse ().toLowerCase ().contains (lowerCaseFilter)) {
+                } else if (membre.getAdresse().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (membre.getEmail ().toLowerCase ().contains (lowerCaseFilter)) {
+                } else if (membre.getEmail().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (membre.getPrenom ().toLowerCase ().contains (lowerCaseFilter)) {
+                } else if (membre.getPrenom().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (membre.getSexe ().toLowerCase ().contains (lowerCaseFilter)) {
+                } else if (membre.getSexe().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (membre.getProfession ().toLowerCase ().contains (lowerCaseFilter)) {
+                } else if (membre.getProfession().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (membre.getSituationM ().toLowerCase ().contains (lowerCaseFilter)) {
+                } else if (membre.getSituationM().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (membre.getTelephone ().toLowerCase ().contains (lowerCaseFilter)) {
+                } else if (membre.getTelephone().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
-                } else if (membre.getDateNaissance ().toString ().toLowerCase ().contains (lowerCaseFilter)) {
+                } else if (membre.getDateNaissance().toString().toLowerCase().contains(lowerCaseFilter)) {
                     return true;
                 }
                 return false;
             });
-            sortedList = new SortedList<> (filteredList);
-            sortedList.comparatorProperty ().bind (tableViewMember.comparatorProperty ());
-            tableViewMember.setItems (sortedList);
+            sortedList = new SortedList<>(filteredList);
+            sortedList.comparatorProperty().bind(tableViewMember.comparatorProperty());
+            Platform.runLater(() -> tableViewMember.setItems(sortedList));
+//            tableViewMember.setItems(sortedList);
         });
     }
 }
