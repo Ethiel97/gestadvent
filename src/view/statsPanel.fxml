@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import java.net.URL?>
@@ -16,37 +16,37 @@
     <children>
         <VBox layoutX="134.0" prefHeight="928.0" prefWidth="1254.0" AnchorPane.bottomAnchor="0.0"
               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-<!--
-            <GridPane alignment="TOP_CENTER" prefHeight="54.0" prefWidth="1247.0" styleClass="headerBackground"
-                      VBox.vgrow="ALWAYS">
-                <columnConstraints>
-                    <ColumnConstraints hgrow="ALWAYS" maxWidth="444.0" minWidth="10.0" prefWidth="232.0"/>
-                    <ColumnConstraints hgrow="ALWAYS" maxWidth="1015.0" minWidth="10.0" prefWidth="1015.0"/>
-                </columnConstraints>
-                <rowConstraints>
-                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS"/>
-                </rowConstraints>
-                <children>
-                    <ImageView blendMode="SCREEN" fitHeight="65.0" fitWidth="85.0" pickOnBounds="true"
-                               preserveRatio="true" VBox.vgrow="ALWAYS">
-                        <GridPane.margin>
-                            <Insets bottom="12.0" left="42.0" right="5.0" top="12.0"/>
-                        </GridPane.margin>
-                        <Image preserveRatio="true" smooth="true" url="@../images/logo.png"/>
-                    </ImageView>
-                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="477.0"
-                           styleClass="headerLabel" text="GESTADVENT - Gestion de membres" textOverrun="WORD_ELLIPSIS"
-                           GridPane.columnIndex="1" VBox.vgrow="ALWAYS">
-                        <font>
-                            <Font size="14.0"/>
-                        </font>
-                        <GridPane.margin>
-                            <Insets bottom="12.0" left="165.0" right="15.0" top="12.0"/>
-                        </GridPane.margin>
-                    </Label>
-                </children>
-            </GridPane>
--->
+            <!--
+                        <GridPane alignment="TOP_CENTER" prefHeight="54.0" prefWidth="1247.0" styleClass="headerBackground"
+                                  VBox.vgrow="ALWAYS">
+                            <columnConstraints>
+                                <ColumnConstraints hgrow="ALWAYS" maxWidth="444.0" minWidth="10.0" prefWidth="232.0"/>
+                                <ColumnConstraints hgrow="ALWAYS" maxWidth="1015.0" minWidth="10.0" prefWidth="1015.0"/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS"/>
+                            </rowConstraints>
+                            <children>
+                                <ImageView blendMode="SCREEN" fitHeight="65.0" fitWidth="85.0" pickOnBounds="true"
+                                           preserveRatio="true" VBox.vgrow="ALWAYS">
+                                    <GridPane.margin>
+                                        <Insets bottom="12.0" left="42.0" right="5.0" top="12.0"/>
+                                    </GridPane.margin>
+                                    <Image preserveRatio="true" smooth="true" url="@../images/logo.png"/>
+                                </ImageView>
+                                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="29.0" prefWidth="477.0"
+                                       styleClass="headerLabel" text="GESTADVENT - Gestion de membres" textOverrun="WORD_ELLIPSIS"
+                                       GridPane.columnIndex="1" VBox.vgrow="ALWAYS">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                    <GridPane.margin>
+                                        <Insets bottom="12.0" left="165.0" right="15.0" top="12.0"/>
+                                    </GridPane.margin>
+                                </Label>
+                            </children>
+                        </GridPane>
+            -->
             <GridPane alignment="TOP_CENTER" prefHeight="54.0" prefWidth="1223.0" styleClass="headerBackground"
                       VBox.vgrow="ALWAYS">
                 <columnConstraints>
@@ -58,8 +58,8 @@
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS"/>
                 </rowConstraints>
                 <children>
-                    <ImageView blendMode="SCREEN" fitHeight="65.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true"
-                               VBox.vgrow="ALWAYS">
+                    <ImageView blendMode="SCREEN" fitHeight="65.0" fitWidth="85.0" pickOnBounds="true"
+                               preserveRatio="true" VBox.vgrow="ALWAYS">
                         <GridPane.margin>
                             <Insets bottom="12.0" left="42.0" right="5.0" top="12.0"/>
                         </GridPane.margin>
@@ -77,8 +77,8 @@
                             <Insets bottom="12.0" left="165.0" right="15.0" top="12.0"/>
                         </GridPane.margin>
                     </Label>
-                    <ImageView blendMode="SCREEN" fitHeight="65.0" fitWidth="85.0" pickOnBounds="true" preserveRatio="true"
-                               VBox.vgrow="ALWAYS" GridPane.columnIndex="2">
+                    <ImageView blendMode="SCREEN" fitHeight="65.0" fitWidth="85.0" pickOnBounds="true"
+                               preserveRatio="true" GridPane.columnIndex="2" VBox.vgrow="ALWAYS">
                         <GridPane.margin>
                             <Insets bottom="12.0" left="118.0" right="5.0" top="12.0"/>
                         </GridPane.margin>
@@ -90,18 +90,16 @@
             </GridPane>
             <AnchorPane prefHeight="849.0" prefWidth="1254.0" VBox.vgrow="ALWAYS">
                 <children>
-                    <TabPane layoutX="5.0" layoutY="91.0" prefHeight="702.0" prefWidth="1254.0"
+                    <TabPane layoutX="5.0" layoutY="91.0" prefHeight="774.0" prefWidth="1254.0"
                              tabClosingPolicy="UNAVAILABLE">
                         <tabs>
                             <Tab text="Tranche d'age">
                                 <content>
-                                    <AnchorPane>
+                                    <AnchorPane prefHeight="783.0" prefWidth="1254.0">
                                         <children>
-                                            <PieChart fx:id="agePieChart" layoutX="237.0" layoutY="-2.0"
-                                                      prefHeight="642.0" prefWidth="928.0"
-                                                      title="Repartition par tranches d'ages">
+                                            <!-- <PieChart fx:id="agePieChart" layoutX="237.0" layoutY="-2.0" prefHeight="642.0" prefWidth="928.0" title="Repartition par tranches d'ages">
 
-                                            </PieChart>
+                                             </PieChart>-->
                                             <Label alignment="CENTER" contentDisplay="TOP" layoutX="27.0" layoutY="58.0"
                                                    prefHeight="31.0" prefWidth="177.0"
                                                    style="-fx-font-size: 25; -fx-background-color: #dea42e;"
@@ -125,19 +123,50 @@
                                                        prefHeight="37.0" prefWidth="181.0"/>
                                             <TextField fx:id="minAge" layoutX="25.0" layoutY="577.0" prefHeight="37.0"
                                                        prefWidth="182.0"/>
+                                            <StackedBarChart fx:id="ageChart" layoutX="245.0" layoutY="20.0"
+                                                             prefHeight="679.0" prefWidth="1000.0"
+                                                             title="Repartition par tranche d'age">
+                                                <xAxis>
+                                                    <CategoryAxis label="Categories" prefHeight="70.0" prefWidth="855.0"
+                                                                  side="BOTTOM"/>
+                                                </xAxis>
+                                                <yAxis>
+                                                    <NumberAxis label="Pourcentage" prefHeight="489.0" prefWidth="75.0"
+                                                                side="LEFT"/>
+                                                </yAxis>
+                                                <cursor>
+                                                    <Cursor fx:constant="CROSSHAIR"/>
+                                                </cursor>
+                                            </StackedBarChart>
                                         </children>
                                     </AnchorPane>
                                 </content>
                             </Tab>
                             <Tab text="Situation Matrimoniale">
-                                <PieChart fx:id="maritalPieChart" title="Situation matrimoniale des membres">
+                                <content>
 
-                                </PieChart>
+
+                                    <AreaChart fx:id="maritalChart">
+                                        <xAxis>
+                                            <CategoryAxis label="Categories" side="BOTTOM"/>
+                                        </xAxis>
+                                        <yAxis>
+                                            <NumberAxis label="Pourcentage" side="LEFT"/>
+                                        </yAxis>
+                                    </AreaChart>
+                                </content>
                             </Tab>
                             <Tab text="Repartition par sexe">
-                                <PieChart fx:id="sexePieChart" title="Repartition par sexe">
-
-                                </PieChart>
+                                <content>
+                                    <BarChart fx:id="sexeChart">
+                                        <xAxis>
+                                            <CategoryAxis side="BOTTOM"/>
+                                        </xAxis>
+                                        <yAxis>
+                                            <NumberAxis side="LEFT"/>
+                                        </yAxis>
+                                    </BarChart>
+                                </content>
                             </Tab>
                             <Tab text="Tresorerie">
 

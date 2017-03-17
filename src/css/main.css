@@ -362,6 +362,11 @@
     -fx-pie-color: #c1bed2;
 }
 
+.bar-chart {
+    -fx-bar-gap: 0;
+    -fx-category-gap: 20;
+}
+
 .tab-pane .tab-header-area .tab-header-background {
     -fx-background-color: rgba(211, 208, 156, 0.33);
     -fx-opacity: .4;
@@ -376,7 +381,8 @@
     /*-fx-background-color: #000;*/
     -fx-cursor: hand;
     -fx-border-color: transparent;
-    -fx-border-radius: 3px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
     -fx-border-width: 5px;
     -fx-background-insets: 0 1 0 1, 0, 0;
     -fx-focus-color: transparent;

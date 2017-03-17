@@ -10,7 +10,7 @@ import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
+import javafx.scene.chart.*;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.control.Tooltip;
@@ -45,23 +45,25 @@ public class statsController implements Initializable {
     @FXML
     private TextField minAge;
     @FXML
-    private PieChart maritalPieChart;
+    private AreaChart<String, Integer> maritalChart;
     @FXML
-    private PieChart agePieChart;
+    private StackedBarChart<String, Integer> ageChart;
     @FXML
-    private PieChart sexePieChart;
+    private BarChart<String, Integer> sexeChart;
     @FXML
     private ImageView backHome;
     @FXML
     private AnchorPane anchorPane;
 
-    private ObservableList<PieChart.Data> ageStats;
-    private ObservableList<PieChart.Data> maritalStats;
-    private ObservableList<PieChart.Data> sexeStats;
+    private ObservableList<XYChart.Series<String, Integer>> ageChartData;
+    private ObservableList<XYChart.Series<String, Integer>> maritalChartData;
+    private ObservableList<XYChart.Series<String, Integer>> sexeChartData;
 
     private ObservableList<Membre> membres;
     private MembreBDAO membreBDAO;
     private Connection con;
+
+    String[] label = {"JEUNES", "VIEUX", "ENFANTS", "ADULTES"};
 
     /**
      * Called to initialize a controller after its root element has been
@@ -80,25 +82,31 @@ public class statsController implements Initializable {
             textInputControl.setDisable(true);
         });
 
-        agePieChart.setLegendSide(Side.BOTTOM);
-        maritalPieChart.setLegendSide(Side.BOTTOM);
+        ageChart.setLegendSide(Side.BOTTOM);
+        maritalChart.setLegendSide(Side.BOTTOM);
+        maritalChart.setLegendVisible(true);
+        maritalChart.setTitle("Situation Matrimoniale des Membres");
         try {
             con = DBUtil.getConnexion();
             membreBDAO = new MembreBDAO(con);
-            ageStats = membreBDAO.getPieChartData("AGE");
-            maritalStats = membreBDAO.getPieChartData("MARITAL");
-            sexeStats = membreBDAO.getPieChartData("SEXE");
+//            ageChartData = membreBDAO.getChartData("AGE");
+        /*    ageChartData.forEach(series -> {
+                int i = -1;
+                series.getChart().getXAxis().setLabel(label[++i]);
+            });*/
+            maritalChartData = membreBDAO.getChartData("MARITAL");
+            sexeChartData = membreBDAO.getChartData("SEXE");
             Platform.runLater(() -> {
-                agePieChart.setData(ageStats);
-                maritalPieChart.setData(maritalStats);
-                sexePieChart.setData(sexeStats);
+                ageChart.setData(membreBDAO.getChartData("AGE"));
+                maritalChart.setData(maritalChartData);
+                sexeChart.setData(sexeChartData);
             });
            /* agePieChart.setData(ageStats);
             maritalPieChart.setData(maritalStats);
             sexePieChart.setData(sexeStats);*/
-            this.addSliceTooltip(agePieChart);
-            this.addSliceTooltip(maritalPieChart);
-            this.addSliceTooltip(sexePieChart);
+//            this.addSliceTooltip(agePieChart);
+//            this.addSliceTooltip(maritalPieChart);
+//            this.addSliceTooltip(sexePieChart);
 
             membres = membreBDAO.getExtrema();
             maxNom.setText(membres.get(0).getNom());

@@ -48,10 +48,10 @@ public class DBUtil {
                 "pasteur VARCHAR(255) NOT NULL,eglise_d VARCHAR(255),eglise_pro VARCHAR(255),date_transfert DATE," +
                 "CONSTRAINT fk_membre_id FOREIGN KEY (id) REFERENCES Membre(id) ON DELETE CASCADE )";
 
-        String tableOffrande = "CREATE TABLE IF NOT EXISTS offrande (id INT NOT NULL PRIMARY KEY,membre INT NOT NULL,montant VARCHAR(255) NOT NULL ,type VARCHAR (255) NOT NULL DEFAULT 'offrandes',sabbat DATE NOT NULL," +
+        String tableOffrande = "CREATE TABLE IF NOT EXISTS offrande (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,membre INT NOT NULL,montant VARCHAR(255) NOT NULL ,type VARCHAR (255) NOT NULL DEFAULT 'offrandes',sabbat DATE NOT NULL," +
                 "CONSTRAINT fk_membre FOREIGN KEY (membre) REFERENCES Membre(id) ON DELETE CASCADE )";
 
-        String tableDime = "CREATE TABLE IF NOT EXISTS dime (id INT NOT NULL PRIMARY KEY,membre INT NOT NULL,montant VARCHAR(255) NOT NULL,sabbat DATE NOT NULL," +
+        String tableDime = "CREATE TABLE IF NOT EXISTS dime (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,membre INT NOT NULL,montant VARCHAR(255) NOT NULL,sabbat DATE NOT NULL," +
                 "CONSTRAINT fk_membre1 FOREIGN KEY (membre) REFERENCES Membre(id) ON DELETE CASCADE )";
 
 

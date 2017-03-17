@@ -129,7 +129,7 @@ public class TresorerieController implements Initializable {
                 int montant = Integer.parseInt((montantField.getText().split(" ")[0]));
                 LocalDate sabbat = sabbatField.getValue();
                 String[] id = membreField.getValue().split(" ");
-
+                String nom = membreField.getValue().split(" ")[1] + " " + membreField.getValue().split(" ")[2];
                 int membre = Integer.valueOf(id[0]);
                 System.out.println(Integer.valueOf(membre));
                 System.out.println(Integer.valueOf(montant));
@@ -137,7 +137,7 @@ public class TresorerieController implements Initializable {
                 con = DBUtil.getConnexion();
                 dimeDAO = new DimeDAO(con);
                 if (dimeDAO.add(dime) > 0) {
-                    message = "Dime de " + membreField.getValue() + " bien enregistree";
+                    message = "Dime de " + nom + " bien enregistree";
                     tray.setMessage(message);
                     tray.setNotificationType(NotificationType.SUCCESS);
                     tray.setAnimationType(AnimationType.SLIDE);
@@ -146,17 +146,17 @@ public class TresorerieController implements Initializable {
                 break;
             }
             case "Offrandes": {
-                String message;
-                int montant = Integer.valueOf(montantField.getText());
+                String message, nom = membreField.getValue().split(" ")[1] + " " + membreField.getValue().split(" ")[2];
+                int montant = Integer.parseInt((montantField.getText().split(" ")[0]));
                 String type = typeField.getValue();
                 LocalDate sabbat = sabbatField.getValue();
-                int membre = Integer.valueOf(membreField.getValue().substring(0, 1));
+                int membre = Integer.valueOf(membreField.getValue().split(" ")[0]);
                 Offrande offrande = new Offrande(type, membre, montant, sabbat);
                 con = DBUtil.getConnexion();
                 offrandeDAO = new OffrandeDAO(con);
 
                 if (offrandeDAO.add(offrande) > 0) {
-                    message = "Offrande de" + offrande.getMembre() + " bien enregistree";
+                    message = "Offrande de " + nom + " bien enregistree";
                     tray.setMessage(message);
                     tray.setNotificationType(NotificationType.SUCCESS);
                     tray.setAnimationType(AnimationType.SLIDE);

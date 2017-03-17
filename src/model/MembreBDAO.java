@@ -5,6 +5,7 @@ import controller.AddController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.chart.PieChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.stage.Modality;
 
@@ -318,12 +319,13 @@ public class MembreBDAO extends DAO<Membre, Bapteme> {
 
     public ObservableList<PieChart.Data> getPieChartData(String stats) {
         ObservableList<PieChart.Data> data = FXCollections.observableArrayList();
+
         String labelEnfants = "ENFANTS", labelVieux = "VIEUX", labelJeunes = "JEUNES", labelAdultes = "ADULTES";
         String query1 = " SELECT sum(ENFANTS) AS ENFANTS FROM( SELECT COUNT(*) AS ENFANTS,date_n,age FROM membre GROUP BY date_n  HAVING age BETWEEN 0 AND 14) AS mediator  ;";
         String query2 = " SELECT sum(JEUNES) AS JEUNES FROM( SELECT COUNT(*) AS JEUNES,date_n,age FROM membre GROUP BY date_n  HAVING age BETWEEN 15 AND 30) AS mediator  ;";
         String query3 = " SELECT sum(ADULTES) AS ADULTES FROM( SELECT COUNT(*) AS ADULTES,date_n,age FROM membre GROUP BY date_n  HAVING age BETWEEN 31 AND 59) AS mediator  ;";
         String query4 = " SELECT sum(VIEUX) AS VIEUX FROM( SELECT COUNT(*) AS VIEUX,date_n,age FROM membre GROUP BY date_n  HAVING age > 60) AS mediator  ;";
-        String query5 = "SELECT count(*) ,situation_m FROM membre  GROUP BY situation_m";
+//        String query5 = "SELECT count(*) ,situation_m FROM membre  GROUP BY situation_m";
         String query6 = "SELECT count(*) ,sexe FROM membre GROUP BY sexe";
 
 
@@ -343,7 +345,7 @@ public class MembreBDAO extends DAO<Membre, Bapteme> {
                     }
                     assert rs != null;
                     while (rs.next()) {
-                        data.add(new PieChart.Data(labelEnfants, (double) rs.getInt(1)));
+                        data.add(new PieChart.Data(rs.getString(1), (double) rs.getInt(1)));
                     }
                     rs = statement.executeQuery(query2);
                     while (rs.next()) {
@@ -361,7 +363,7 @@ public class MembreBDAO extends DAO<Membre, Bapteme> {
                     e.printStackTrace();
                 }
                 break;
-            case "MARITAL":
+          /*  case "MARITAL":
                 try {
                     rs = statement != null ? statement.executeQuery(query5) : null;
                     int i = 0;
@@ -371,7 +373,8 @@ public class MembreBDAO extends DAO<Membre, Bapteme> {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
-                break;
+                return datas;
+                break;*/
             case "SEXE":
                 try {
                     rs = statement != null ? statement.executeQuery(query6) : null;
@@ -380,6 +383,95 @@ public class MembreBDAO extends DAO<Membre, Bapteme> {
                     while (rs.next()) {
                         data.add(new PieChart.Data(rs.getString(2).toUpperCase(), (double) rs.getInt(1)));
                     }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            default:
+                data = null;
+        }
+
+        return data;
+    }
+
+    public ObservableList<XYChart.Series<String, Integer>> getChartData(String stats) {
+        String labelEnfants = "ENFANTS", labelVieux = "VIEUX", labelJeunes = "JEUNES", labelAdultes = "ADULTES";
+        String query1 = " SELECT sum(ENFANTS) AS ENFANTS FROM( SELECT COUNT(*) AS ENFANTS,date_n,age FROM membre GROUP BY date_n  HAVING age BETWEEN 0 AND 14) AS mediator  ;";
+        String query2 = " SELECT sum(JEUNES) AS JEUNES FROM( SELECT COUNT(*) AS JEUNES,date_n,age FROM membre GROUP BY date_n  HAVING age BETWEEN 15 AND 30) AS mediator  ;";
+        String query3 = " SELECT sum(ADULTES) AS ADULTES FROM( SELECT COUNT(*) AS ADULTES,date_n,age FROM membre GROUP BY date_n  HAVING age BETWEEN 31 AND 59) AS mediator  ;";
+        String query4 = " SELECT sum(VIEUX) AS VIEUX FROM( SELECT COUNT(*) AS VIEUX,date_n,age FROM membre GROUP BY date_n  HAVING age > 60) AS mediator  ;";
+
+        String query5 = "SELECT count(*) ,situation_m FROM membre  GROUP BY situation_m";
+        String query6 = "SELECT count(*) ,sexe FROM membre GROUP BY sexe";
+        Statement statement = null;
+        ResultSet rs = null;
+        try {
+            statement = con.createStatement();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        ObservableList<XYChart.Series<String, Integer>> data = FXCollections.observableArrayList();
+        XYChart.Series<String, Integer> series = new XYChart.Series<>();
+        XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
+        XYChart.Series<String, Integer> series2 = new XYChart.Series<>();
+        XYChart.Series<String, Integer> series3 = new XYChart.Series<>();
+        XYChart.Series<String, Integer> series4 = new XYChart.Series<>();
+//        XYChart.Series<String, Integer> series5 = new XYChart.Series<>();
+
+        switch (stats) {
+            case "MARITAL":
+                try {
+                    if (statement != null) {
+                        rs = statement.executeQuery(query5);
+                    }
+                    while (rs != null && rs.next()) {
+                        series.getData().add(new XYChart.Data<>(rs.getString(2).toUpperCase() + "S", rs.getInt(1)));
+                    }
+                    data.add(series);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+
+                break;
+            case "SEXE":
+                try {
+                    rs = statement != null ? statement.executeQuery(query6) : null;
+                    assert rs != null;
+                    while (rs.next()) {
+                        series.getData().add(new XYChart.Data<>(rs.getString(2).toUpperCase(), rs.getInt(1)));
+                    }
+                    data.add(series);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "AGE":
+                try {
+                    rs = statement.executeQuery(query1);
+                    assert rs != null;
+                    series1.setName("ENFANTS");
+                    while (rs.next()) {
+                        series1.getData().add(new XYChart.Data<>(labelEnfants, rs.getInt(1)));
+                    }
+                    rs = statement.executeQuery(query2);
+                    series2.setName("JEUNES");
+                    while (rs.next()) {
+                        series2.getData().add(new XYChart.Data<>(labelJeunes, rs.getInt(1)));
+                    }
+                    series3.setName("ADULTES");
+                    rs = statement.executeQuery(query3);
+                    while (rs.next()) {
+                        series3.getData().add(new XYChart.Data<>(labelAdultes + " ESSAI PRIMORDIAL", rs.getInt(1)));
+
+                    }
+                    rs = statement.executeQuery(query4);
+                    series4.setName("VIEUX");
+                    while (rs.next()) {
+                        series4.getData().add(new XYChart.Data<String, Integer>(labelVieux, rs.getInt(1)));
+                    }
+                    data.addAll(series1, series2, series3, series4);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -405,8 +497,8 @@ public class MembreBDAO extends DAO<Membre, Bapteme> {
             rs = st.executeQuery(max);
             while (rs.next()) {
                 Membre membre = new Membre();
-                membre.setNom(rs.getString("nom"));
                 membre.setPrenom(rs.getString("prenom"));
+                membre.setNom(rs.getString("nom"));
                 membre.setAge(Integer.valueOf(rs.getString("age")));
                 membres.add(membre);
             }

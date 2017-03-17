@@ -9,7 +9,7 @@ import java.sql.*;
 
 
 public class OffrandeDAO implements DaoCo<Offrande> {
-    String ajouterOffrande = "INSERT INTO DIME(type,membre,montant,sabbat) VALUES(?,?,?,?)";
+    String ajouterOffrande = "INSERT INTO OFFRANDE(type,membre,montant,sabbat) VALUES(?,?,?,?)";
     String supprimerOffrande = "DELETE FROM dime WHERE id =?";
     String modifierOffrande = "UPDATE TABLE DIME SET type = ?, membre = ?,montant = ?,sabbat = ? WHERE id = ?";
     String voirOffrande = "SELECT * FROM offrande";
